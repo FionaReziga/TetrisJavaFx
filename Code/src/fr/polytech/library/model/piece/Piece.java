@@ -125,9 +125,9 @@ public abstract class Piece {
     private boolean checkPieceCollisions(int[][] caseFulled, int[][] matrix, Integer posX, Integer posY) {
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[0].length; j++) {
-                if(matrix[i][j] == 1 && caseFulled[i + posX][j + posY] == 1) return false;
+                if(matrix[i][j] == 1 && caseFulled[i + posX][j + posY] == 1) return true;
             }
         }
-        return true;
+        return false;
     }
 }

@@ -49,6 +49,12 @@ public class GridTetris extends Grid {
         showPieceTetris();
     }
 
+    private void clearOneRow(int rowIndex){
+        for (int i = 0; i < caseFulled[rowIndex].length; i++) {
+            caseFulled[rowIndex][i] = 0;
+        }
+    }
+
     public Piece getCurrentPiece() {
         return currentPiece;
     }
@@ -59,9 +65,19 @@ public class GridTetris extends Grid {
             for (int j = 0; j < matrix[0].length; j++) {
                 Node object = gridPane.getChildren().get((i + currentPiece.getPosX()) + ((j + currentPiece.getPosY()) * height) + 1);
                 if (object instanceof Rectangle && matrix[i][j] != 0) {
-                    caseFulled[currentPiece.getPosX() + i ][currentPiece.getPosY() + j] = 1;
+                    caseFulled[currentPiece.getPosX() + i][currentPiece.getPosY() + j] = 1;
                 }
             }
+        }
+    }
+
+    public void checkRowComplete() {
+        boolean checkRow = true;
+        for (int i = 0; i < caseFulled.length; i++) {
+            for (int j = 0; j < caseFulled[0].length; j++) {
+                if(caseFulled[i][j] != 1) checkRow = false;
+            }
+            if(checkRow) clearOneRow(i);
         }
     }
 

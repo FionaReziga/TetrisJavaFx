@@ -28,6 +28,7 @@ public class TetrisController {
     public void movePiece(int offsetX, int offsetY) {
         if(!grid.getCurrentPiece().move(offsetX, offsetY, grid.getCaseFulled())) {
             grid.savePiece();
+            grid.checkRowComplete();
             generateNewPiece();
         }
         grid.clearGridTetris();
