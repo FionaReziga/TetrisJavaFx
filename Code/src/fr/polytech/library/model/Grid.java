@@ -57,7 +57,7 @@ public class Grid {
         int[][] matrix = piece.getMatrix();
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[0].length; j++) {
-                Node object = gridPane.getChildren().get((i + piece.getPosX()) + ((j + piece.getPosY()) * height));
+                Node object = gridPane.getChildren().get((i + piece.getPosX()) + ((j + piece.getPosY()) * height) + 1);
                 if (object instanceof Rectangle && matrix[i][j] != 0) {
                     Rectangle current = (Rectangle) object;
                     current.setFill(piece.getColor());

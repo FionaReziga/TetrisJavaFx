@@ -8,8 +8,8 @@ public class PieceL3 extends Piece{
     public PieceL3(int posX, int posY,  int gridHeight, int gridWidth) {
         super(posX, posY, gridHeight, gridWidth);
         int[][] matrix = new int[][]{
-                {3, 3, 3},
-                {3, 0, 0}
+                {1, 1, 1},
+                {1, 0, 0}
         };
         setMatrix(matrix);
     }

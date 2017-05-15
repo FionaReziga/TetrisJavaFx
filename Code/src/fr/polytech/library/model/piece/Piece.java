@@ -56,15 +56,18 @@ public abstract class Piece {
         return color;
     }
 
-    public void move(int offsetX, int offsetY) {
+    public boolean move(int offsetX, int offsetY, int[][] caseFulled) {
         int futurPosX = this.posX + offsetX;
         int futurPosY = this.posY + offsetY;
-        // this.matrix.length + 1 car on souhaite descendre la pièce d'une case et non pas de sa taille totale
-        if (futurPosX >= 0 && futurPosX <= (gridHeight - this.matrix.length + 1)) this.posX = futurPosX;
-        if (futurPosY >= 0 && futurPosY <= (gridWidth - this.matrix[0].length)) this.posY = futurPosY;
+
+        if (!checkCollisions(caseFulled, null, futurPosX, null)) this.posX = futurPosX;
+        else if (offsetX == 1 && offsetY == 0) return false;
+        if (!checkCollisions(caseFulled, null, null, futurPosY)) this.posY = futurPosY;
+
+        return true;
     }
 
-    public void rotate() {
+    public void rotate(int[][] caseFulled) {
         int columns = this.matrix[0].length;
         int rows = this.matrix.length;
 
@@ -76,16 +79,7 @@ public abstract class Piece {
             }
         }
 
-        this.matrix = newMatrix;
-
-        int futurPosX = this.posX + columns;
-        int futurPosY = this.posY + rows;
-        if (futurPosX < 0 || futurPosX > gridHeight + 1) {
-            move(-1, 0);
-        }
-        if (futurPosY < 0 || futurPosY > gridWidth) {
-            move(0, -1);
-        }
+        if (!checkCollisions(caseFulled, newMatrix, null, null)) this.matrix = newMatrix;
     }
 
     private Color generateRandomColor() {
@@ -93,10 +87,47 @@ public abstract class Piece {
         return colorList.get(new Random().nextInt(colorList.size()));
     }
 
-    public static Piece generateRandomPiece(List<Piece> pieceList) {
+    public static Piece generateRandomPiece(int[][] caseFulled, List<Piece> pieceList) {
         Piece piece = pieceList.get(new Random().nextInt(pieceList.size()));
         int rotate = (int) (Math.random() * 4);
-        IntStream.range(0, rotate).forEach(value ->  piece.rotate());
+        IntStream.range(0, rotate).forEach(value -> piece.rotate(caseFulled));
         return piece;
+    }
+
+    private boolean checkCollisions(int[][] caseFulled, int[][] matrix, Integer posX, Integer posY) {
+        if (matrix != null) {
+            // Cas d'une rotation
+            int columns = matrix[0].length;
+            int rows = matrix.length;
+
+            // On check les murs et les côtés
+            int futurPosX = this.posX + columns;
+            int futurPosY = this.posY + rows;
+
+            if (!(futurPosX < 0 || futurPosX > gridHeight) && !(futurPosY < 0 || futurPosY > gridWidth)) {
+                if (!checkPieceCollisions(caseFulled, matrix, posX == null ? this.posX : posX, posY == null ? this.posY : posY)) return false;
+            }
+        } else if (posX != null) {
+            // Cas d'une translation
+            if (posX >= 0 && posX <= (gridHeight - this.matrix.length)) {
+                if (!checkPieceCollisions(caseFulled, this.matrix, posX, posY == null ? this.posY : posY)) return false;
+            }
+        } else if (posY != null) {
+            // Cas d'une translation
+            if (posY >= 0 && posY <= (gridWidth - this.matrix[0].length)) {
+                if (!checkPieceCollisions(caseFulled, this.matrix, this.posX, posY)) return false;
+            }
+        }
+
+        return true;
+    }
+
+    private boolean checkPieceCollisions(int[][] caseFulled, int[][] matrix, Integer posX, Integer posY) {
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[0].length; j++) {
+                if(matrix[i][j] == 1 && caseFulled[i + posX][j + posY] == 1) return false;
+            }
+        }
+        return true;
     }
 }

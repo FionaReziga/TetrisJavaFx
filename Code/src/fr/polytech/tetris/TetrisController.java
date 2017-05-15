@@ -1,7 +1,6 @@
 package fr.polytech.tetris;
 
 import fr.polytech.library.model.Board;
-import fr.polytech.library.model.piece.Piece;
 import fr.polytech.tetris.model.GridTetris;
 import javafx.scene.paint.Color;
 
@@ -17,9 +16,7 @@ public class TetrisController {
 
     public TetrisController(int width, int height, int sizeCase, Color color) {
         //this.board = new Board(width, height, sizeCase, color);
-        Piece currentPiece = generateRandomPiece();
-        Piece nextPiece = generateRandomPiece();
-        this.grid = new GridTetris(width, height, sizeCase, color, currentPiece, nextPiece);
+        this.grid = new GridTetris(width, height, sizeCase, color);
         //this.previousGrid = new GridTetris(PREVIOUS_GRID_WIDTH, PREVIOUS_GRID_HEIGHT, sizeCase, previousColor, currentPiece, nextPiece);
         this.board = new Board(grid);
     }
@@ -29,17 +26,20 @@ public class TetrisController {
     }
 
     public void movePiece(int offsetX, int offsetY) {
-        grid.getCurrentPiece().move(offsetX, offsetY);
-        grid.drawGridTetris();
+        if(!grid.getCurrentPiece().move(offsetX, offsetY, grid.getCaseFulled())) {
+            grid.savePiece();
+            generateNewPiece();
+        }
+        grid.clearGridTetris();
     }
 
     public void rotatePiece() {
-        grid.getCurrentPiece().rotate();
-        grid.drawGridTetris();
+        grid.getCurrentPiece().rotate(grid.getCaseFulled());
+        grid.clearGridTetris();
     }
 
-/*    private Piece generateNewPiece() {
-        nextPiece = new PieceL3(1, 3, grid);
-        return nextPiece;
-    }*/
+    private void generateNewPiece() {
+        grid.setCurrentPiece(grid.getNextPiece());
+        grid.setNextPiece(generateRandomPiece(grid.getCaseFulled()));
+    }
 }

@@ -17,14 +17,14 @@ public class PieceTetris extends Piece {
         super(posX, posY, gridHeight, gridWidth);
     }
 
-    public static Piece generateRandomPiece() {
+    public static Piece generateRandomPiece(int[][] caseFulled) {
         List<Piece> pieceList = new ArrayList<>();
         pieceList.addAll(asList(
-                new PieceI4(1, 3, GRID_HEIGHT, GRID_WIDTH),
-                new PieceL3(1, 3, GRID_HEIGHT, GRID_WIDTH),
-                new PieceO4(1, 3, GRID_HEIGHT, GRID_WIDTH),
-                new PieceL6(1, 3, GRID_HEIGHT, GRID_WIDTH)
+                new PieceI4(0, 3, GRID_HEIGHT, GRID_WIDTH),
+                new PieceL3(0, 3, GRID_HEIGHT, GRID_WIDTH),
+                new PieceO4(0, 3, GRID_HEIGHT, GRID_WIDTH),
+                new PieceL6(0, 3, GRID_HEIGHT, GRID_WIDTH)
         ));
-        return generateRandomPiece(pieceList);
+        return generateRandomPiece(caseFulled, pieceList);
     }
 }

@@ -6,73 +6,44 @@ import javafx.scene.Node;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import static java.util.stream.IntStream.range;
 import static javafx.scene.paint.Color.BLACK;
 
 /**
  * Created by REZIGA on 15/05/2017.
  */
 public class GridTetris extends Grid {
-    private List<IdentifierBoolean> caseFulled;
+    private int[][] caseFulled;
     private Piece currentPiece;
     private Piece nextPiece;
 
-    public GridTetris(int width, int height, int sizeCase, Color color, Piece currentPiece, Piece nextPiece) {
+    public GridTetris(int width, int height, int sizeCase, Color color) {
         super(width, height, sizeCase, color);
-        this.currentPiece = currentPiece;
-        this.nextPiece = nextPiece;
         initializeMapCases();
+        this.currentPiece = PieceTetris.generateRandomPiece(caseFulled);
+        this.nextPiece = PieceTetris.generateRandomPiece(caseFulled);
     }
 
     private void initializeMapCases() {
-        caseFulled = new ArrayList<>();
-        range(0, width * height).forEach(value -> caseFulled.add(new IdentifierBoolean(0l, false)));
+        caseFulled = new int[height][width];
+        for (int i = 0; i < caseFulled.length; i++) {
+            for (int j = 0; j < caseFulled[0].length; j++) {
+                caseFulled[i][j] = 0;
+            }
+        }
     }
 
     public void showPieceTetris() {
-        // Affichage de la pièce
-        /*int[][] matrix = currentPiece.getMatrix();
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix[0].length; j++) {
-                Node object = gridPane.getChildren().get((i + currentPiece.getPosX()) + ((j + currentPiece.getPosY()) * height));
-                if (object instanceof Rectangle && matrix[i][j] != 0) {
-                    Rectangle current = (Rectangle) object;
-                    current.setFill(currentPiece.getColor());
-                    //caseFulled.set((i + currentPiece.getPosX()) + ((j + currentPiece.getPosY()) * height), new IdentifierBoolean(currentPiece.getId(), true));
-                }
-            }
-        }*/
         super.showPiece(currentPiece);
     }
 
-    public void drawGridTetris() {
-/*        for (int i = 0; i < width; i++) {
-            for (int j = 0; j < height; j++) {
-                Node object = gridPane.getChildren().get(i * height + j);
-                if (object instanceof Rectangle) {
-                    IdentifierBoolean currentCase = caseFulled.get(i * width + j - 1);
-                    if (currentCase.isCaseEmpty() || currentCase.getIdentifierPiece() == currentPiece.getId()) {
-                            Rectangle current = (Rectangle) gridPane.getChildren().get(i * height + j);
-                            current.setFill(BLACK);
-                            caseFulled.set((i * height + j - 1), new IdentifierBoolean(0l, false));
-                    }
-                }
-            }
-        }*/
-
-        for (int i = 0; i <= height; i++) {
+    public void clearGridTetris() {
+        for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
-                Node object = gridPane.getChildren().get(i + j * height);
-                if (object instanceof Rectangle) {
-                    //IdentifierBoolean currentCase = caseFulled.get(i * width + j - 1);
-                    Rectangle current = (Rectangle) gridPane.getChildren().get(i + j * height);
+                Node object = gridPane.getChildren().get(i + (j * height) + 1);
+                if (object instanceof Rectangle && caseFulled[i][j] != 1) {
+                    Rectangle current = (Rectangle) gridPane.getChildren().get(i + (j * height) + 1);
                     current.setFill(BLACK);
-                    //caseFulled.set((i * height + j - 1), new IdentifierBoolean(0l, false));
                 }
-                //super.clearGrid();
             }
         }
         showPieceTetris();
@@ -80,5 +51,33 @@ public class GridTetris extends Grid {
 
     public Piece getCurrentPiece() {
         return currentPiece;
+    }
+
+    public void savePiece() {
+        int[][] matrix = currentPiece.getMatrix();
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[0].length; j++) {
+                Node object = gridPane.getChildren().get((i + currentPiece.getPosX()) + ((j + currentPiece.getPosY()) * height) + 1);
+                if (object instanceof Rectangle && matrix[i][j] != 0) {
+                    caseFulled[currentPiece.getPosX() + i ][currentPiece.getPosY() + j] = 1;
+                }
+            }
+        }
+    }
+
+    public int[][] getCaseFulled() {
+        return caseFulled;
+    }
+
+    public void setCurrentPiece(Piece currentPiece) {
+        this.currentPiece = currentPiece;
+    }
+
+    public Piece getNextPiece() {
+        return nextPiece;
+    }
+
+    public void setNextPiece(Piece nextPiece) {
+        this.nextPiece = nextPiece;
     }
 }
