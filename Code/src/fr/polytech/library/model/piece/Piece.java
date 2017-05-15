@@ -4,6 +4,7 @@ import javafx.scene.paint.Color;
 
 import java.util.List;
 import java.util.Random;
+import java.util.stream.IntStream;
 
 import static java.util.Arrays.asList;
 import static javafx.scene.paint.Color.*;
@@ -81,16 +82,21 @@ public abstract class Piece {
         int futurPosY = this.posY + rows;
         if (futurPosX < 0 || futurPosX > gridHeight + 1) {
             move(-1, 0);
-            //futurPosX = this.posX + rows;
         }
         if (futurPosY < 0 || futurPosY > gridWidth) {
             move(0, -1);
-            //futurPosY = this.posY + columns;
         }
     }
 
     private Color generateRandomColor() {
         List<Color> colorList = asList(RED, ORANGE, YELLOW, GREEN, CYAN, BLUE, DARKBLUE, PINK, PURPLE, GREY, BROWN);
         return colorList.get(new Random().nextInt(colorList.size()));
+    }
+
+    public static Piece generateRandomPiece(List<Piece> pieceList) {
+        Piece piece = pieceList.get(new Random().nextInt(pieceList.size()));
+        int rotate = (int) (Math.random() * 4);
+        IntStream.range(0, rotate).forEach(value ->  piece.rotate());
+        return piece;
     }
 }

@@ -36,6 +36,7 @@ public class Grid {
             for (int j = 0; j < height; j++) {
                 Rectangle rectangle = new Rectangle(sizeCase, sizeCase);
                 rectangle.setFill(color);
+                rectangle.setArcHeight(1);
                 gridPane.add(rectangle, i, j);
             }
         }

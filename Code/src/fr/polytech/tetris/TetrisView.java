@@ -16,8 +16,8 @@ import static javafx.scene.paint.Color.BLACK;
  * Created by REZIGA on 14/05/2017.
  */
 public class TetrisView extends Application {
-    protected final static int GRID_WIDTH = 10;
-    protected final static int GRID_HEIGHT = 16;
+    public final static int GRID_WIDTH = 10;
+    public final static int GRID_HEIGHT = 16;
     protected final static int PREVIOUS_GRID_WIDTH = 4;
     protected final static int PREVIOUS_GRID_HEIGHT = 4;
     protected final static int SIZE_CASE = 30;
