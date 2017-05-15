@@ -6,8 +6,7 @@ import fr.polytech.library.model.piece.PieceL3;
 import fr.polytech.tetris.model.GridTetris;
 import javafx.scene.paint.Color;
 
-import static fr.polytech.tetris.TetrisView.GRID_HEIGHT;
-import static fr.polytech.tetris.TetrisView.GRID_WIDTH;
+import static fr.polytech.tetris.TetrisView.*;
 
 /**
  * Created by REZIGA on 14/05/2017.
@@ -15,13 +14,14 @@ import static fr.polytech.tetris.TetrisView.GRID_WIDTH;
 public class TetrisController {
     Board board;
     GridTetris grid;
-
+    //GridTetris previousGrid;
 
     public TetrisController(int width, int height, int sizeCase, Color color) {
         //this.board = new Board(width, height, sizeCase, color);
         Piece currentPiece = new PieceL3(1, 3, GRID_HEIGHT, GRID_WIDTH);
         Piece nextPiece = new PieceL3(1, 3, GRID_HEIGHT, GRID_WIDTH);
         this.grid = new GridTetris(width, height, sizeCase, color, currentPiece, nextPiece);
+        //this.previousGrid = new GridTetris(PREVIOUS_GRID_WIDTH, PREVIOUS_GRID_HEIGHT, sizeCase, previousColor, currentPiece, nextPiece);
         this.board = new Board(grid);
     }
 

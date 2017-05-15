@@ -18,8 +18,11 @@ import static javafx.scene.paint.Color.BLACK;
 public class TetrisView extends Application {
     protected final static int GRID_WIDTH = 10;
     protected final static int GRID_HEIGHT = 16;
+    protected final static int PREVIOUS_GRID_WIDTH = 4;
+    protected final static int PREVIOUS_GRID_HEIGHT = 4;
     protected final static int SIZE_CASE = 30;
-    protected final static Color COLOR = BLACK;
+    protected final static Color PREVIOUS_GRID_COLOR = BLACK;
+    protected final static Color GRID_COLOR = BLACK;
 
     public static void main(String[] args) {
         launch(args);
@@ -27,11 +30,14 @@ public class TetrisView extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        TetrisController controller = new TetrisController(GRID_WIDTH, GRID_HEIGHT, SIZE_CASE, COLOR);
+        TetrisController controller = new TetrisController(GRID_WIDTH, GRID_HEIGHT, SIZE_CASE, GRID_COLOR);
         BorderPane border = new BorderPane();
+        //BorderPane previousBorder = new BorderPane();
         GridPane gridPane = controller.getBoard().getGrid().getGridPane();
+        //GridPane gridPreviousPane = controller.getBoard().getGrid().getGridPane();
 
         gridPane.setMaxSize(SIZE_CASE * GRID_WIDTH, SIZE_CASE * GRID_HEIGHT);
+        //gridPreviousPane.setMaxSize(SIZE_CASE * PREVIOUS_GRID_WIDTH, SIZE_CASE * PREVIOUS_GRID_HEIGHT);
 
         primaryStage.setTitle("Tetris");
 

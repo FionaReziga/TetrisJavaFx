@@ -49,26 +49,36 @@ public class GridTetris extends Grid {
     }
 
     public void drawGridTetris() {
-        for (int i = 0; i < width; i++) {
+/*        for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
                 Node object = gridPane.getChildren().get(i * height + j);
                 if (object instanceof Rectangle) {
                     IdentifierBoolean currentCase = caseFulled.get(i * width + j - 1);
                     if (currentCase.isCaseEmpty() || currentCase.getIdentifierPiece() == currentPiece.getId()) {
-                        // Si la pièce est tout en bas on ne la clean pas
-                        int posHeightPiece = currentPiece.getPosX() + currentPiece.getMatrix().length - 1;
-                        if(posHeightPiece != height) {
                             Rectangle current = (Rectangle) gridPane.getChildren().get(i * height + j);
                             current.setFill(BLACK);
                             caseFulled.set((i * height + j - 1), new IdentifierBoolean(0l, false));
-                        } else {
-                            currentPiece = nextPiece;
-                            nextPiece = new PieceL3(1, 3, height, width);
-                        }
+                    }
+                }
+            }
+        }*/
+
+        for (int i = 0; i < width; i++) {
+            for (int j = 0; j < height; j++) {
+                Node object = gridPane.getChildren().get(i * height + j );
+                if (object instanceof Rectangle) {
+                    IdentifierBoolean currentCase = caseFulled.get(i * width + j - 1);
+                    if (currentCase.isCaseEmpty() || currentCase.getIdentifierPiece() == currentPiece.getId()) {
+                        Rectangle current = (Rectangle) gridPane.getChildren().get(i + (j * width));
+                        current.setFill(BLACK);
+                        caseFulled.set((i * height + j - 1), new IdentifierBoolean(0l, false));
                     }
                 }
             }
         }
+
+        currentPiece = nextPiece;
+        nextPiece = new PieceL3(1, 3, height, width);
         showPieceTetris();
     }
 
