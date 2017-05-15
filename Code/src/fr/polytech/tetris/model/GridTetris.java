@@ -2,7 +2,6 @@ package fr.polytech.tetris.model;
 
 import fr.polytech.library.model.Grid;
 import fr.polytech.library.model.piece.Piece;
-import fr.polytech.library.model.piece.PieceL3;
 import javafx.scene.Node;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -35,17 +34,18 @@ public class GridTetris extends Grid {
 
     public void showPieceTetris() {
         // Affichage de la pièce
-        int[][] matrix = currentPiece.getMatrix();
+        /*int[][] matrix = currentPiece.getMatrix();
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[0].length; j++) {
                 Node object = gridPane.getChildren().get((i + currentPiece.getPosX()) + ((j + currentPiece.getPosY()) * height));
                 if (object instanceof Rectangle && matrix[i][j] != 0) {
                     Rectangle current = (Rectangle) object;
                     current.setFill(currentPiece.getColor());
-                    caseFulled.set((i + currentPiece.getPosX()) + ((j + currentPiece.getPosY()) * height), new IdentifierBoolean(currentPiece.getId(), true));
+                    //caseFulled.set((i + currentPiece.getPosX()) + ((j + currentPiece.getPosY()) * height), new IdentifierBoolean(currentPiece.getId(), true));
                 }
             }
-        }
+        }*/
+        super.showPiece(currentPiece);
     }
 
     public void drawGridTetris() {
@@ -63,22 +63,18 @@ public class GridTetris extends Grid {
             }
         }*/
 
-        for (int i = 0; i < width; i++) {
-            for (int j = 0; j < height; j++) {
-                Node object = gridPane.getChildren().get(i * height + j );
+        for (int i = 0; i <= height; i++) {
+            for (int j = 0; j < width; j++) {
+                Node object = gridPane.getChildren().get(i + j * height);
                 if (object instanceof Rectangle) {
-                    IdentifierBoolean currentCase = caseFulled.get(i * width + j - 1);
-                    if (currentCase.isCaseEmpty() || currentCase.getIdentifierPiece() == currentPiece.getId()) {
-                        Rectangle current = (Rectangle) gridPane.getChildren().get(i + (j * width));
-                        current.setFill(BLACK);
-                        caseFulled.set((i * height + j - 1), new IdentifierBoolean(0l, false));
-                    }
+                    //IdentifierBoolean currentCase = caseFulled.get(i * width + j - 1);
+                    Rectangle current = (Rectangle) gridPane.getChildren().get(i + j * height);
+                    current.setFill(BLACK);
+                    //caseFulled.set((i * height + j - 1), new IdentifierBoolean(0l, false));
                 }
+                //super.clearGrid();
             }
         }
-
-        currentPiece = nextPiece;
-        nextPiece = new PieceL3(1, 3, height, width);
         showPieceTetris();
     }
 
