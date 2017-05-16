@@ -5,15 +5,18 @@ import fr.polytech.tetris.controller.TetrisController;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.ColumnConstraints;
-import javafx.scene.layout.RowConstraints;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
 import static javafx.scene.paint.Color.BLACK;
+import static javafx.scene.paint.Color.WHITE;
 
 /**
  * Created by REZIGA on 14/05/2017.
@@ -28,6 +31,8 @@ public class TetrisView extends Application {
     protected final static Color PREVIOUS_GRID_COLOR = BLACK;
     protected final static Color GRID_COLOR = BLACK;
 
+    private GPane gPane;
+
     public static void main(String[] args) {
         launch(args);
     }
@@ -37,61 +42,94 @@ public class TetrisView extends Application {
         TetrisController controller = new TetrisController(GRID_WIDTH, GRID_HEIGHT, SIZE_CASE, GRID_COLOR);
         BorderPane border = new BorderPane();
 
-        //BorderPane previousBorder = new BorderPane();
-        GPane gridPane = new GPane(controller.getBoard());
+        BorderPane previousBorder = new BorderPane();
+        gPane = new GPane(controller.getBoard());
 
-        gridPane.setGridLinesVisible(true);
+        initializeGridPane();
+
+        border.setCenter(gPane);
+
+        final Button buttonPause = new Button("Pause");
+        AnchorPane.setTopAnchor(buttonPause, 250.);
+        AnchorPane.setLeftAnchor(buttonPause, 30.);
+        buttonPause.setStyle("-fx-background-color: linear-gradient(#686868 0%, #232723 25%, #373837 75%, #757575 100%), linear-gradient(#020b02, #3a3a3a), linear-gradient(#9d9e9d 0%, #6b6a6b 20%, #343534 80%, #242424 100%), linear-gradient(#8a8a8a 0%, #6b6a6b 20%, #343534 80%, #262626 100%), linear-gradient(#777777 0%, #606060 50%, #505250 51%, #2a2b2a 100%); " + " -fx-background-insets: 0,1,4,5,6;  -fx-background-radius: 9,8,5,4,3;  -fx-padding: 10 52 10 52;  -fx-font-size: 15px;  -fx-font-weight: bold;  -fx-text-fill: whitesmoke;  -fx-effect: dropshadow( three-pass-box , rgba(255,255,255,0.2) , 1, 0.0 , 0 , 1)");
+
+
+        final Button buttonNewGame = new Button("Nouvelle Partie");
+        AnchorPane.setTopAnchor(buttonNewGame, 300.);
+        AnchorPane.setLeftAnchor(buttonNewGame, 30.);
+        buttonNewGame.setFont(Font.font ("Helvetica"));
+        buttonNewGame.setStyle("-fx-background-color: linear-gradient(#686868 0%, #232723 25%, #373837 75%, #757575 100%), linear-gradient(#020b02, #3a3a3a), linear-gradient(#9d9e9d 0%, #6b6a6b 20%, #343534 80%, #242424 100%), linear-gradient(#8a8a8a 0%, #6b6a6b 20%, #343534 80%, #262626 100%), linear-gradient(#777777 0%, #606060 50%, #505250 51%, #2a2b2a 100%); " + " -fx-background-insets: 0,1,4,5,6;  -fx-background-radius: 9,8,5,4,3;  -fx-padding: 10 20 10 20;  -fx-font-size: 15px;  -fx-font-weight: bold;  -fx-text-fill: whitesmoke;  -fx-effect: dropshadow( three-pass-box , rgba(255,255,255,0.2) , 1, 0.0 , 0 , 1)");
+
+        final Label scoreLabel = new Label("Score");
+        scoreLabel.setFont(Font.font("Arial", FontWeight.BOLD, 35));
+        scoreLabel.setStyle("-fx-text-fill: linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet);");
+        AnchorPane.setTopAnchor(scoreLabel, 50.);
+        AnchorPane.setRightAnchor(scoreLabel, 40.);
+
+        final Label scoreValue = new Label("" + controller.getBoard().getScore());
+        scoreValue.setFont(Font.font("Arial", FontWeight.BOLD, 35));
+        scoreLabel.setTextFill(WHITE);
+        AnchorPane.setTopAnchor(scoreValue, 100.);
+        AnchorPane.setRightAnchor(scoreValue, 40.);
+
+        AnchorPane.setLeftAnchor(border, 200.);
+        AnchorPane.setBottomAnchor(border, 0.);
+
+        Image logo = new Image("/fr/polytech/tetris/logo.png");
+        ImageView iv3 = new ImageView();
+        iv3.setImage(logo);
+        iv3.setFitHeight(100);
+        iv3.setFitWidth(150);
+
+        AnchorPane.setLeftAnchor(iv3, 25.);
+        AnchorPane.setTopAnchor(iv3, 60.);
+
+        final AnchorPane root = new AnchorPane();
+        root.getChildren().setAll(scoreLabel, scoreValue, buttonNewGame, buttonPause, border, iv3);
+
+        Image im = new Image("/fr/polytech/tetris/bg.jpg");
+        BackgroundSize backgroundSize = new BackgroundSize(GRID_WIDTH * SIZE_CASE + 400, GRID_HEIGHT * SIZE_CASE, false, false, false, false);
+        root.setBackground(new Background(new BackgroundImage(im, BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, backgroundSize)));
+
+        final Scene scene = new Scene(root, GRID_WIDTH * SIZE_CASE + 400, GRID_HEIGHT * SIZE_CASE);
+
+        primaryStage.setTitle("Tetris");
+        primaryStage.setResizable(false);
+        primaryStage.setScene(scene);
+        primaryStage.show();
+
+        scene.setOnKeyPressed(controller);
+        primaryStage.setScene(scene);
+
+        primaryStage.show();
+    }
+
+    private void initializeGridPane() {
+        gPane.setGridLinesVisible(true);
         for (int i = 0; i < GRID_WIDTH; i++) {
             for (int j = 0; j < GRID_HEIGHT; j++) {
                 Rectangle rectangle = new Rectangle(SIZE_CASE, SIZE_CASE);
                 rectangle.setFill(GRID_COLOR);
                 rectangle.setStroke(BLACK);
                 rectangle.setStrokeWidth(1);
-                gridPane.add(rectangle, i, j);
+                gPane.add(rectangle, i, j);
             }
         }
 
         // Add constraints
         for (int i = 0; i < GRID_WIDTH; i++) {
             ColumnConstraints column = new ColumnConstraints(SIZE_CASE);
-            gridPane.getColumnConstraints().add(column);
+            gPane.getColumnConstraints().add(column);
         }
         for (int j = 0; j < GRID_HEIGHT; j++) {
             RowConstraints row = new RowConstraints(SIZE_CASE);
-            gridPane.getRowConstraints().add(row);
+            gPane.getRowConstraints().add(row);
         }
-        //GridPane gridPreviousPane = controller.getBoardTetris().getGrid().getGridPane();
+        //GridPane gridPreviousPane = controller.getBoard();
 
-        gridPane.setMaxSize(SIZE_CASE * GRID_WIDTH, SIZE_CASE * GRID_HEIGHT);
+        gPane.setMaxSize(SIZE_CASE * GRID_WIDTH, SIZE_CASE * GRID_HEIGHT);
         //gridPreviousPane.setMaxSize(SIZE_CASE * PREVIOUS_GRID_WIDTH, SIZE_CASE * PREVIOUS_GRID_HEIGHT);
 
-        primaryStage.setTitle("Tetris");
-        primaryStage.setResizable(false);
-
-        border.setCenter(gridPane);
-
-        final Button buttonPause = new Button("Pause");
-        AnchorPane.setBottomAnchor(buttonPause, 150.);
-        AnchorPane.setRightAnchor(buttonPause, 80.);
-
-        final Button buttonNewGame = new Button("Nouvelle Partie");
-        AnchorPane.setBottomAnchor(buttonNewGame, 100.);
-        AnchorPane.setRightAnchor(buttonNewGame, 50.);
-
-        AnchorPane.setLeftAnchor(border, 200.);
-        AnchorPane.setBottomAnchor(border, 0.);
-        final AnchorPane root = new AnchorPane();
-        root.getChildren().setAll(buttonNewGame, buttonPause, border);
-        final Scene scene = new Scene(root, GRID_WIDTH * SIZE_CASE + 400, GRID_HEIGHT * SIZE_CASE);
-        primaryStage.setTitle("Tetris");
-        primaryStage.setScene(scene);
-        primaryStage.show();
-
-        //Scene scene = new Scene(border, PUZZLE_GRID_WIDTH * SIZE_CASE + 400, PUZZLE_GRID_HEIGHT * SIZE_CASE);
-
-        scene.setOnKeyPressed(controller);
-        primaryStage.setScene(scene);
-
-        primaryStage.show();
     }
 }

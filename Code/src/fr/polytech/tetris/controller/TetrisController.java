@@ -32,6 +32,7 @@ public class TetrisController implements EventHandler<KeyEvent> {
                     break;
                 case DOWN:
                     board.movePiece(1, 0);
+                    board.setScore(1);
                     break;
                 case LEFT:
                     board.movePiece(0, -1);
