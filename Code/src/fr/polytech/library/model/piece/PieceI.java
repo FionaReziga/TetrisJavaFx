@@ -1,12 +1,16 @@
 package fr.polytech.library.model.piece;
 
+import javafx.scene.paint.Color;
+
+import static javafx.scene.paint.Color.CYAN;
+
 /**
  * Created by REZIGA on 14/05/2017.
  */
-public class PieceI4 extends Piece {
-
-    public PieceI4(int posX, int posY,  int gridHeight, int gridWidth) {
+public class PieceI extends Piece {
+    public PieceI(int posX, int posY, int gridHeight, int gridWidth) {
         super(posX, posY, gridHeight, gridWidth);
+        this.color = CYAN;
         int[][] matrix = new int[][]{
                 {1},
                 {1},
@@ -14,5 +18,9 @@ public class PieceI4 extends Piece {
                 {1}
         };
         setMatrix(matrix);
+    }
+
+    public Color getColor() {
+        return color;
     }
 }

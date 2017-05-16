@@ -1,14 +1,7 @@
 package fr.polytech.library.model;
 
 import fr.polytech.library.model.piece.Piece;
-import javafx.scene.Node;
-import javafx.scene.layout.ColumnConstraints;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.RowConstraints;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
-
-import static javafx.scene.paint.Color.BLACK;
 
 /**
  * Created by REZIGA on 14/05/2017.
@@ -18,25 +11,58 @@ public class Grid {
     protected int width;
     protected int height;
     protected int sizeCase;
-    protected GridPane gridPane;
     protected Color color;
+    protected Color[][] caseFulled;
+
+    protected Piece currentPiece;
+
+    public Color[][] getCaseFulled() {
+        return caseFulled;
+    }
+
+    public Piece getCurrentPiece() {
+        return currentPiece;
+    }
 
     public Grid(int width, int height, int sizeCase, Color color) {
         this.width = width;
         this.height = height;
         this.sizeCase = sizeCase;
         this.color = color;
-        generateGridPane();
     }
 
-    private void generateGridPane() {
+    public boolean movePiece(int offsetX, int offsetY) {
+        boolean movePiece = !currentPiece.move(offsetX, offsetY, caseFulled);
+        if(movePiece) {
+            savePiece();
+        }
+        return movePiece;
+    }
+
+    public void rotatePiece() {
+        currentPiece.rotate(caseFulled);
+    }
+
+    public void savePiece() {
+        int[][] matrix = currentPiece.getMatrix();
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[0].length; j++) {
+                if (matrix[i][j] != 0) {
+                    caseFulled[currentPiece.getPosX() + i][currentPiece.getPosY() + j] = currentPiece.getColor();
+                }
+            }
+        }
+    }
+
+ /*   private void generateGridPane() {
         gridPane = new GridPane();
         gridPane.setGridLinesVisible(true);
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
                 Rectangle rectangle = new Rectangle(sizeCase, sizeCase);
                 rectangle.setFill(color);
-                rectangle.setArcHeight(1);
+                rectangle.setStroke(BLACK);
+                rectangle.setStrokeWidth(1);
                 gridPane.add(rectangle, i, j);
             }
         }
@@ -52,35 +78,32 @@ public class Grid {
         }
     }
 
-    public void showPiece(Piece piece) {
+    public void showPiece() {
         // Affichage de la pièce
-        int[][] matrix = piece.getMatrix();
+        int[][] matrix = currentPiece.getMatrix();
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[0].length; j++) {
-                Node object = gridPane.getChildren().get((i + piece.getPosX()) + ((j + piece.getPosY()) * height) + 1);
+                Node object = gridPane.getChildren().get((i + currentPiece.getPosX()) + ((j + currentPiece.getPosY()) * height) + 1);
                 if (object instanceof Rectangle && matrix[i][j] != 0) {
                     Rectangle current = (Rectangle) object;
-                    current.setFill(piece.getColor());
+                    current.setFill(currentPiece.getColor());
                 }
             }
         }
     }
 
     public void clearGrid() {
-        for (int i = 0; i <= height; i++) {
+        for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
-                Node object = gridPane.getChildren().get(i + (j * height));
-                if (object instanceof Rectangle) {
-                    Rectangle current = (Rectangle) gridPane.getChildren().get(i + (j * height));
+                Node object = gridPane.getChildren().get(i + (j * height) + 1);
+                if (object instanceof Rectangle && caseFulled[i][j] == null) {
+                    Rectangle current = (Rectangle) gridPane.getChildren().get(i + (j * height) + 1);
                     current.setFill(BLACK);
                 }
             }
         }
-    }
-
-    public GridPane getGridPane() {
-        return gridPane;
-    }
+        showPiece();
+    }*/
 
     public int getWidth() {
         return width;

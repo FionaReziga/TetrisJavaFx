@@ -1,6 +1,7 @@
 package fr.polytech.tetris.model;
 
 import fr.polytech.library.model.piece.*;
+import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,13 +18,15 @@ public class PieceTetris extends Piece {
         super(posX, posY, gridHeight, gridWidth);
     }
 
-    public static Piece generateRandomPiece(int[][] caseFulled) {
+    public static Piece generateRandomPiece(Color[][] caseFulled) {
         List<Piece> pieceList = new ArrayList<>();
         pieceList.addAll(asList(
-                new PieceI4(0, 3, GRID_HEIGHT, GRID_WIDTH),
-                new PieceL3(0, 3, GRID_HEIGHT, GRID_WIDTH),
-                new PieceO4(0, 3, GRID_HEIGHT, GRID_WIDTH),
-                new PieceL6(0, 3, GRID_HEIGHT, GRID_WIDTH)
+                new PieceI(0, 3, GRID_HEIGHT, GRID_WIDTH),
+                new PieceL(0, 3, GRID_HEIGHT, GRID_WIDTH),
+                new PieceInvL(0, 3, GRID_HEIGHT, GRID_WIDTH),
+                new PieceO(0, 3, GRID_HEIGHT, GRID_WIDTH),
+                new PieceS(0, 3, GRID_HEIGHT, GRID_WIDTH),
+                new PieceT(0, 3, GRID_HEIGHT, GRID_WIDTH)
         ));
         return generateRandomPiece(caseFulled, pieceList);
     }

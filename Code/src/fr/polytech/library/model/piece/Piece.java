@@ -6,9 +6,6 @@ import java.util.List;
 import java.util.Random;
 import java.util.stream.IntStream;
 
-import static java.util.Arrays.asList;
-import static javafx.scene.paint.Color.*;
-
 /**
  * Created by REZIGA on 14/05/2017.
  */
@@ -18,10 +15,11 @@ public abstract class Piece {
     private Long id;
     private int posX;
     private int posY;
-    private Color color;
     private int[][] matrix;
     private int gridHeight;
     private int gridWidth;
+
+    protected Color color;
 
     public Piece(int posX, int posY, int gridHeight, int gridWidth) {
         this.id = idCounter++;
@@ -29,7 +27,10 @@ public abstract class Piece {
         this.posY = posY;
         this.gridHeight = gridHeight;
         this.gridWidth = gridWidth;
-        this.color = generateRandomColor();
+    }
+
+    public Color getColor() {
+        return color;
     }
 
     public int[][] getMatrix() {
@@ -52,11 +53,7 @@ public abstract class Piece {
         return posY;
     }
 
-    public Color getColor() {
-        return color;
-    }
-
-    public boolean move(int offsetX, int offsetY, int[][] caseFulled) {
+    public boolean move(int offsetX, int offsetY, Color[][] caseFulled) {
         int futurPosX = this.posX + offsetX;
         int futurPosY = this.posY + offsetY;
 
@@ -67,7 +64,7 @@ public abstract class Piece {
         return true;
     }
 
-    public void rotate(int[][] caseFulled) {
+    public void rotate(Color[][] caseFulled) {
         int columns = this.matrix[0].length;
         int rows = this.matrix.length;
 
@@ -82,25 +79,20 @@ public abstract class Piece {
         if (!checkCollisions(caseFulled, newMatrix, null, null)) this.matrix = newMatrix;
     }
 
-    private Color generateRandomColor() {
-        List<Color> colorList = asList(RED, ORANGE, YELLOW, GREEN, CYAN, BLUE, DARKBLUE, PINK, PURPLE, GREY, BROWN);
-        return colorList.get(new Random().nextInt(colorList.size()));
-    }
-
-    public static Piece generateRandomPiece(int[][] caseFulled, List<Piece> pieceList) {
+    public static Piece generateRandomPiece(Color[][] caseFulled, List<Piece> pieceList) {
         Piece piece = pieceList.get(new Random().nextInt(pieceList.size()));
         int rotate = (int) (Math.random() * 4);
         IntStream.range(0, rotate).forEach(value -> piece.rotate(caseFulled));
         return piece;
     }
 
-    private boolean checkCollisions(int[][] caseFulled, int[][] matrix, Integer posX, Integer posY) {
+    private boolean checkCollisions(Color[][] caseFulled, int[][] matrix, Integer posX, Integer posY) {
         if (matrix != null) {
             // Cas d'une rotation
             int columns = matrix[0].length;
             int rows = matrix.length;
 
-            // On check les murs et les côtés
+
             int futurPosX = this.posX + columns;
             int futurPosY = this.posY + rows;
 
@@ -122,10 +114,10 @@ public abstract class Piece {
         return true;
     }
 
-    private boolean checkPieceCollisions(int[][] caseFulled, int[][] matrix, Integer posX, Integer posY) {
+    private boolean checkPieceCollisions(Color[][] caseFulled, int[][] matrix, Integer posX, Integer posY) {
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[0].length; j++) {
-                if(matrix[i][j] == 1 && caseFulled[i + posX][j + posY] == 1) return true;
+                if(matrix[i][j] != 0 && caseFulled[i + posX][j + posY] != null) return true;
             }
         }
         return false;

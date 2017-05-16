@@ -2,18 +2,14 @@ package fr.polytech.tetris.model;
 
 import fr.polytech.library.model.Grid;
 import fr.polytech.library.model.piece.Piece;
-import javafx.scene.Node;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 
-import static javafx.scene.paint.Color.BLACK;
+import static fr.polytech.tetris.model.PieceTetris.generateRandomPiece;
 
 /**
  * Created by REZIGA on 15/05/2017.
  */
 public class GridTetris extends Grid {
-    private int[][] caseFulled;
-    private Piece currentPiece;
     private Piece nextPiece;
 
     public GridTetris(int width, int height, int sizeCase, Color color) {
@@ -21,37 +17,28 @@ public class GridTetris extends Grid {
         initializeMapCases();
         this.currentPiece = PieceTetris.generateRandomPiece(caseFulled);
         this.nextPiece = PieceTetris.generateRandomPiece(caseFulled);
+
     }
 
     private void initializeMapCases() {
-        caseFulled = new int[height][width];
+        caseFulled = new Color[height][width];
         for (int i = 0; i < caseFulled.length; i++) {
             for (int j = 0; j < caseFulled[0].length; j++) {
-                caseFulled[i][j] = 0;
+                caseFulled[i][j] = null;
             }
         }
     }
 
-    public void showPieceTetris() {
-        super.showPiece(currentPiece);
-    }
-
-    public void clearGridTetris() {
-        for (int i = 0; i < height; i++) {
-            for (int j = 0; j < width; j++) {
-                Node object = gridPane.getChildren().get(i + (j * height) + 1);
-                if (object instanceof Rectangle && caseFulled[i][j] != 1) {
-                    Rectangle current = (Rectangle) gridPane.getChildren().get(i + (j * height) + 1);
-                    current.setFill(BLACK);
-                }
-            }
-        }
-        showPieceTetris();
-    }
-
-    private void clearOneRow(int rowIndex){
+    public void clearOneRow(int rowIndex) {
         for (int i = 0; i < caseFulled[rowIndex].length; i++) {
-            caseFulled[rowIndex][i] = 0;
+            caseFulled[rowIndex][i] = null;
+        }
+        goDownMatrix(rowIndex);
+    }
+
+    private void goDownMatrix(int rowIndex) {
+        for (int i = rowIndex; i > 0; i--) {
+            caseFulled[i] = caseFulled[i - 1];
         }
     }
 
@@ -59,29 +46,33 @@ public class GridTetris extends Grid {
         return currentPiece;
     }
 
-    public void savePiece() {
-        int[][] matrix = currentPiece.getMatrix();
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix[0].length; j++) {
-                Node object = gridPane.getChildren().get((i + currentPiece.getPosX()) + ((j + currentPiece.getPosY()) * height) + 1);
-                if (object instanceof Rectangle && matrix[i][j] != 0) {
-                    caseFulled[currentPiece.getPosX() + i][currentPiece.getPosY() + j] = 1;
-                }
-            }
+    @Override
+    public synchronized boolean movePiece(int offsetX, int offsetY) {
+        boolean move = super.movePiece(offsetX, offsetY);
+        if(move) {
+            checkRowComplete();
+            generateNewPieceWithNextPiece();
         }
+        return move;
+    }
+
+    private void generateNewPieceWithNextPiece() {
+        currentPiece = nextPiece;
+        nextPiece = generateRandomPiece(caseFulled);
     }
 
     public void checkRowComplete() {
-        boolean checkRow = true;
-        for (int i = 0; i < caseFulled.length; i++) {
+        boolean checkRow;
+        for (int i = caseFulled.length - 1; i >= 0; i--) {
+            checkRow = true;
             for (int j = 0; j < caseFulled[0].length; j++) {
-                if(caseFulled[i][j] != 1) checkRow = false;
+                if (caseFulled[i][j] == null) checkRow = false;
             }
-            if(checkRow) clearOneRow(i);
+            if (checkRow) clearOneRow(i);
         }
     }
 
-    public int[][] getCaseFulled() {
+    public Color[][] getCaseFulled() {
         return caseFulled;
     }
 
