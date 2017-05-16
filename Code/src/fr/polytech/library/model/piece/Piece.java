@@ -117,9 +117,28 @@ public abstract class Piece {
     private boolean checkPieceCollisions(Color[][] caseFulled, int[][] matrix, Integer posX, Integer posY) {
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[0].length; j++) {
+                if(((i + posX) >= caseFulled.length) || ((j + posY) >= caseFulled[0].length)) return true;
                 if(matrix[i][j] != 0 && caseFulled[i + posX][j + posY] != null) return true;
             }
         }
         return false;
+    }
+
+    public void setColor(Color color) {
+        this.color = color;
+    }
+
+    public void getSetMatrixWithRotation(){
+        int columns = this.matrix[0].length;
+        int rows = this.matrix.length;
+
+        int[][] newMatrix = new int[columns][rows];
+
+        for (int j = 0; j < columns; j++) {
+            for (int i = 0, k = rows - 1; i < rows; i++, k--) {
+                newMatrix[j][i] = matrix[k][j] ;
+            }
+        }
+        matrix = newMatrix;
     }
 }

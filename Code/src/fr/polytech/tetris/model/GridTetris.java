@@ -14,19 +14,8 @@ public class GridTetris extends Grid {
 
     public GridTetris(int width, int height, int sizeCase, Color color) {
         super(width, height, sizeCase, color);
-        initializeMapCases();
-        this.currentPiece = PieceTetris.generateRandomPiece(caseFulled);
-        this.nextPiece = PieceTetris.generateRandomPiece(caseFulled);
-
-    }
-
-    private void initializeMapCases() {
-        caseFulled = new Color[height][width];
-        for (int i = 0; i < caseFulled.length; i++) {
-            for (int j = 0; j < caseFulled[0].length; j++) {
-                caseFulled[i][j] = null;
-            }
-        }
+        this.currentPiece = generateRandomPiece(caseFulled);
+        this.nextPiece = generateRandomPiece(caseFulled);
     }
 
     public void clearOneRow(int rowIndex) {
@@ -42,10 +31,6 @@ public class GridTetris extends Grid {
         }
     }
 
-    public Piece getCurrentPiece() {
-        return currentPiece;
-    }
-
     @Override
     public synchronized boolean movePiece(int offsetX, int offsetY) {
         boolean move = super.movePiece(offsetX, offsetY);
@@ -57,8 +42,13 @@ public class GridTetris extends Grid {
     }
 
     private void generateNewPieceWithNextPiece() {
-        currentPiece = nextPiece;
-        nextPiece = generateRandomPiece(caseFulled);
+        Piece piece = generateRandomPiece(caseFulled);
+        if(checkFuturPiece(piece)) {
+            currentPiece = nextPiece;
+            nextPiece = generateRandomPiece(caseFulled);
+        } else {
+            gameOver = true;
+        }
     }
 
     public void checkRowComplete() {
@@ -68,23 +58,23 @@ public class GridTetris extends Grid {
             for (int j = 0; j < caseFulled[0].length; j++) {
                 if (caseFulled[i][j] == null) checkRow = false;
             }
-            if (checkRow) clearOneRow(i);
+            if (checkRow) {
+                clearOneRow(i);
+                i++;
+            }
         }
+    }
+
+    public boolean checkFuturPiece(Piece piece){
+        for (int i = 0; i < piece.getMatrix().length; i++) {
+            for (int j = 0; j < piece.getMatrix()[0].length; j++) {
+                if(caseFulled[i + piece.getPosX()][j + piece.getPosY()] != null) return false;
+            }
+        }
+        return true;
     }
 
     public Color[][] getCaseFulled() {
         return caseFulled;
-    }
-
-    public void setCurrentPiece(Piece currentPiece) {
-        this.currentPiece = currentPiece;
-    }
-
-    public Piece getNextPiece() {
-        return nextPiece;
-    }
-
-    public void setNextPiece(Piece nextPiece) {
-        this.nextPiece = nextPiece;
     }
 }

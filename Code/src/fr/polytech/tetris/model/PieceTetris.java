@@ -21,7 +21,7 @@ public class PieceTetris extends Piece {
     public static Piece generateRandomPiece(Color[][] caseFulled) {
         List<Piece> pieceList = new ArrayList<>();
         pieceList.addAll(asList(
-                new PieceI(0, 3, GRID_HEIGHT, GRID_WIDTH),
+                new PieceBigI(0, 3, GRID_HEIGHT, GRID_WIDTH),
                 new PieceL(0, 3, GRID_HEIGHT, GRID_WIDTH),
                 new PieceInvL(0, 3, GRID_HEIGHT, GRID_WIDTH),
                 new PieceO(0, 3, GRID_HEIGHT, GRID_WIDTH),

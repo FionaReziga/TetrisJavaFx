@@ -23,21 +23,33 @@ public class GPane extends GridPane implements Observer{
     public void update(java.util.Observable o, Object arg) {
         Board board = (Board) o;
 
-        // Affichage de la pièce
-        int[][] matrix =  board.getGrid().getCurrentPiece().getMatrix();
         int height = board.getGrid().getHeight();
         int width = board.getGrid().getWidth();
         Color[][] caseFulled = board.getGrid().getCaseFulled();
+
+        // On nettoie la grille
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
-                Node object = getChildren().get(i + (j * height));
-                if (object instanceof Rectangle && caseFulled[i][j] == null) {
-                    Rectangle current = (Rectangle) getChildren().get(i + (j * height));
+                Node object = getChildren().get(i + (j * height) + 1);
+                if (object instanceof Rectangle) {
+                    Rectangle current = (Rectangle) getChildren().get(i + (j * height) + 1);
                     current.setFill(BLACK);
                 }
             }
         }
 
+        // On parcourt la matrice concernant les pieces déjà dans la grille
+        for (int i = 0; i < caseFulled.length; i++) {
+            for (int j = 0; j < caseFulled[0].length; j++) {
+                Node object = getChildren().get(i + (j * height) + 1);
+                if (object instanceof Rectangle) {
+                    Rectangle current = (Rectangle) getChildren().get(i + (j * height) + 1);
+                    if(caseFulled[i][j] != null) current.setFill(caseFulled[i][j]);
+                }
+            }
+        }
+
+        // Affichage de la pièce
         int[][] matrixPiece = board.getGrid().getCurrentPiece().getMatrix();
         for (int i = 0; i < matrixPiece.length; i++) {
             for (int j = 0; j < matrixPiece[0].length; j++) {

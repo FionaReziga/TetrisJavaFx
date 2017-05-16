@@ -1,6 +1,6 @@
 package fr.polytech.tetris.controller;
 
-import fr.polytech.tetris.ThreadJeuTetris;
+import fr.polytech.tetris.ThreadTetris;
 import fr.polytech.tetris.model.BoardTetris;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
@@ -15,7 +15,7 @@ public class TetrisController implements EventHandler<KeyEvent> {
 
     public TetrisController(int width, int height, int sizeCase, Color color) {
         this.board = new BoardTetris(width, height, sizeCase, color);
-        ThreadJeuTetris thread = new ThreadJeuTetris(board);
+        new ThreadTetris(board);
         pause = false;
     }
 

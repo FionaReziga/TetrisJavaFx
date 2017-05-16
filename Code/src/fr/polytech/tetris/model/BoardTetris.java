@@ -13,7 +13,7 @@ public class BoardTetris extends Board {
         super(width, height, sizeCase, color);
         grid = new GridTetris(width, height, sizeCase, color);
         stop = false;
-        //this.previousGrid = new GridTetris(2,2, sizeCase, Color.BROWN);
+        //this.previousGrid = new GridPuzzle(2,2, sizeCase, Color.BROWN);
     }
 
     public synchronized void movePiece(int offsetX, int offsetY) {

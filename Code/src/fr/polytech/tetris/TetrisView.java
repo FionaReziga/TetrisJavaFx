@@ -87,7 +87,7 @@ public class TetrisView extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
 
-        //Scene scene = new Scene(border, GRID_WIDTH * SIZE_CASE + 400, GRID_HEIGHT * SIZE_CASE);
+        //Scene scene = new Scene(border, PUZZLE_GRID_WIDTH * SIZE_CASE + 400, PUZZLE_GRID_HEIGHT * SIZE_CASE);
 
         scene.setOnKeyPressed(controller);
         primaryStage.setScene(scene);
