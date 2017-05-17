@@ -1,6 +1,7 @@
 package fr.polytech.tetris;
 
 import fr.polytech.tetris.model.BoardTetris;
+import fr.polytech.tetris.model.GridTetris;
 
 import javax.swing.*;
 
@@ -9,21 +10,25 @@ import javax.swing.*;
  */
 public class ThreadTetris implements Runnable {
     private BoardTetris board;
+    private GridTetris grid;
 
     public ThreadTetris(BoardTetris board) {
         this.board = board;
+        this.grid = (GridTetris) board.getGrid();
         new Thread(this).start();
     }
 
     @Override
     public void run() {
         try {
-            while(!board.isStop() || !board.getGrid().isGameOver()){
-                Thread.sleep(1000);
+            while(!board.isStop() && !grid.isGameOver()){
+                Thread.sleep(300);
                 board.movePiece(1, 0);
-            }
-            if(board.getGrid().isGameOver()) {
-                JOptionPane.showMessageDialog(null, "Perdu");
+
+                if(grid.isGameOver()) {
+                    JOptionPane.showMessageDialog(null, "Perdu");
+                    Thread.currentThread().interrupt();
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();

@@ -10,12 +10,14 @@ import javafx.scene.paint.Color;
  * Created by REZIGA on 16/05/2017.
  */
 public class TetrisController implements EventHandler<KeyEvent> {
-    BoardTetris board;
-    boolean pause;
+    private BoardTetris board;
+    private boolean pause;
+    private ThreadTetris threadTetris;
+
 
     public TetrisController(int width, int height, int sizeCase, Color color) {
-        this.board = new BoardTetris(width, height, sizeCase, color);
-        new ThreadTetris(board);
+        board = new BoardTetris(width, height, sizeCase, color);
+        threadTetris = new ThreadTetris(board);
         pause = false;
     }
 
@@ -42,5 +44,10 @@ public class TetrisController implements EventHandler<KeyEvent> {
                     break;
             }
         }
+    }
+
+    public void newGame() {
+        pause = false;
+        board.newGame();
     }
 }

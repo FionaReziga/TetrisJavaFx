@@ -11,14 +11,16 @@ import static fr.polytech.tetris.model.PieceTetris.generateRandomPiece;
  */
 public class GridTetris extends Grid {
     private Piece nextPiece;
+    private boolean gameOver;
 
     public GridTetris(int width, int height, int sizeCase, Color color) {
         super(width, height, sizeCase, color);
         this.currentPiece = generateRandomPiece(caseFulled);
         this.nextPiece = generateRandomPiece(caseFulled);
+        gameOver = false;
     }
 
-    public void clearOneRow(int rowIndex) {
+    private void clearOneRow(int rowIndex) {
         for (int i = 0; i < caseFulled[rowIndex].length; i++) {
             caseFulled[rowIndex][i] = null;
         }
@@ -74,7 +76,20 @@ public class GridTetris extends Grid {
         return true;
     }
 
+    public boolean isGameOver() {
+        return gameOver;
+    }
+
+    public void setGameOver(boolean gameOver) {
+        this.gameOver = gameOver;
+    }
+
     public Color[][] getCaseFulled() {
         return caseFulled;
     }
+
+    public Piece getNextPiece() {
+        return nextPiece;
+    }
+
 }

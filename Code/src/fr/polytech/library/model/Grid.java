@@ -13,7 +13,6 @@ public class Grid {
     private int sizeCase;
     protected Color color;
     protected Color[][] caseFulled;
-    protected boolean gameOver;
     protected Piece currentPiece;
 
     public Grid(int width, int height, int sizeCase, Color color) {
@@ -21,11 +20,10 @@ public class Grid {
         this.height = height;
         this.sizeCase = sizeCase;
         this.color = color;
-        this.gameOver = false;
         initializeMapCases();
     }
 
-    private void initializeMapCases() {
+    protected void initializeMapCases() {
         caseFulled = new Color[height][width];
         for (int i = 0; i < caseFulled.length; i++) {
             for (int j = 0; j < caseFulled[0].length; j++) {
@@ -55,10 +53,6 @@ public class Grid {
                 }
             }
         }
-    }
-
-    public boolean isGameOver() {
-        return gameOver;
     }
 
     public int getWidth() {

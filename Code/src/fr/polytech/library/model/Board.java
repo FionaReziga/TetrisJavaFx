@@ -17,4 +17,6 @@ public class Board  extends Observable {
     public Grid getGrid() {
         return grid;
     }
+
+
 }

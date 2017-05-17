@@ -1,6 +1,5 @@
 package fr.polytech.puzzle.controller;
 
-import fr.polytech.puzzle.ThreadPuzzle;
 import fr.polytech.puzzle.model.BoardPuzzle;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
@@ -14,7 +13,6 @@ public class PuzzleController implements EventHandler<KeyEvent> {
 
     public PuzzleController(int width, int height, int sizeCase, Color color) {
         this.board = new BoardPuzzle(width, height, sizeCase, color);
-        new ThreadPuzzle(board);
     }
 
     @Override
