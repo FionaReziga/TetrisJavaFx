@@ -32,7 +32,7 @@ public class Grid {
     }
 
     /**
-     *
+     * Initialisation
      */
     private void initializeMapCases() {
         caseFulled = new Color[height][width];

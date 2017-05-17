@@ -109,10 +109,18 @@ public class GridTetris extends Grid {
         return true;
     }
 
+    /**
+     * Renvoie gameOver
+     * @return
+     */
     public boolean isGameOver() {
         return gameOver;
     }
 
+    /**
+     * Définit le gameOver
+     * @param gameOver
+     */
     public void setGameOver(boolean gameOver) {
         this.gameOver = gameOver;
     }
@@ -121,6 +129,10 @@ public class GridTetris extends Grid {
         return caseFulled;
     }
 
+    /**
+     * Renvoie la pièce suivante
+     * @return
+     */
     public Piece getNextPiece() {
         return nextPiece;
     }

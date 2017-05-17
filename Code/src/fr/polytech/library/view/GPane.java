@@ -20,6 +20,11 @@ public class GPane extends GridPane implements Observer{
         board.addObserver(this);
     }
 
+    /**
+     * Mise à jour de la Grid Pane
+     * @param o
+     * @param arg
+     */
     @Override
     public void update(java.util.Observable o, Object arg) {
         Board board = (Board) o;

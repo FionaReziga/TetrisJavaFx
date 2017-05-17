@@ -147,6 +147,7 @@ public class TetrisView extends Application implements Observer {
         // Sons
         String sound = "src/fr/polytech/tetris/ressources/song.mp3";
         Media media = new Media(new File(sound).toURI().toString());
+
         MediaPlayer mp = new MediaPlayer(media);
         mp.play();
 
@@ -187,6 +188,11 @@ public class TetrisView extends Application implements Observer {
         gridPane.setMaxSize(sizeCase * width, sizeCase * height);
     }
 
+    /**
+     * Mise à jour de la grille
+     * @param o
+     * @param arg
+     */
     @Override
     public void update(Observable o, Object arg) {
         BoardTetris board = (BoardTetris) o;

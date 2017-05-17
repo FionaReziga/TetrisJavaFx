@@ -27,6 +27,11 @@ public class PuzzleView extends Application {
         launch(args);
     }
 
+    /**
+     * Démarrage
+     * @param primaryStage
+     * @throws Exception
+     */
     @Override
     public void start(Stage primaryStage) throws Exception {
         PuzzleController controller = new PuzzleController(PUZZLE_GRID_WIDTH, PUZZLE_GRID_HEIGHT, SIZE_CASE, GRID_COLOR);
