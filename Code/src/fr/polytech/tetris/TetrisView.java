@@ -12,6 +12,8 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
@@ -20,6 +22,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import javax.swing.*;
+import java.io.File;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -33,16 +36,13 @@ import static javafx.scene.paint.Color.WHITE;
 public class TetrisView extends Application implements Observer {
     public final static int GRID_WIDTH = 10;
     public final static int GRID_HEIGHT = 16;
-    protected final static int PREVIOUS_GRID_WIDTH = 5;
-    protected final static int PREVIOUS_GRID_HEIGHT = 5;
-    protected final static int SIZE_CASE = 30;
-    protected final static int SIZE_PIECE_CASE = 30;
-    protected final static Color PREVIOUS_GRID_COLOR = BLACK;
-    protected final static Color GRID_COLOR = BLACK;
+    private final static int PREVIOUS_GRID_WIDTH = 5;
+    private final static int PREVIOUS_GRID_HEIGHT = 5;
+    private final static int SIZE_CASE = 30;
+    private final static Color PREVIOUS_GRID_COLOR = BLACK;
+    private final static Color GRID_COLOR = BLACK;
 
-    private GPane gPane;
-    private GridPane gridPane;
-    private Label scoreLabel;
+    private GridPane previousPane;
     private Text scoreValue;
     private TetrisController controller;
 
@@ -53,7 +53,7 @@ public class TetrisView extends Application implements Observer {
     /**
      * Démarrage du jeu
      * Démarrage du jeu
-     * @param primaryStage
+     *
      * @throws Exception
      */
     @Override
@@ -66,19 +66,18 @@ public class TetrisView extends Application implements Observer {
         controller = new TetrisController(GRID_WIDTH, GRID_HEIGHT, SIZE_CASE, GRID_COLOR);
         BorderPane border = new BorderPane();
 
-        BorderPane previousBorder = new BorderPane();
-        gPane = new GPane(controller.getBoard());
-        gridPane = new GridPane();
+        GPane tetrisPane = new GPane(controller.getBoard());
+        previousPane = new GridPane();
         controller.getBoard().addObserver(this);
 
-        initializeGridPane();
-        initializePreviousGridPane();
+        initializeGrid(tetrisPane, GRID_WIDTH, GRID_HEIGHT, GRID_COLOR, SIZE_CASE);
+        initializeGrid(previousPane, PREVIOUS_GRID_WIDTH, PREVIOUS_GRID_HEIGHT, PREVIOUS_GRID_COLOR, SIZE_CASE);
 
-        border.setCenter(gPane);
+        border.setCenter(tetrisPane);
 
         // Boutons
-        AnchorPane.setBottomAnchor(gridPane, 40.);
-        AnchorPane.setRightAnchor(gridPane, 20.);
+        AnchorPane.setBottomAnchor(previousPane, 40.);
+        AnchorPane.setRightAnchor(previousPane, 20.);
 
         final Button buttonPause = new Button("Pause");
         AnchorPane.setTopAnchor(buttonPause, 250.);
@@ -107,7 +106,7 @@ public class TetrisView extends Application implements Observer {
 
         });
 
-        scoreLabel = new Label("Score");
+        Label scoreLabel = new Label("Score");
         scoreLabel.setFont(Font.font("Arial", FontWeight.BOLD, 35));
         scoreLabel.setStyle("-fx-text-fill: linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet);");
         AnchorPane.setTopAnchor(scoreLabel, 50.);
@@ -122,7 +121,9 @@ public class TetrisView extends Application implements Observer {
         AnchorPane.setLeftAnchor(border, 200.);
         AnchorPane.setBottomAnchor(border, 0.);
 
-        Image logo = new Image("/fr/polytech/tetris/logo.png");
+        // Images
+
+        Image logo = new Image("/fr/polytech/tetris/ressources/logo.png");
         ImageView iv3 = new ImageView();
         iv3.setImage(logo);
         iv3.setFitHeight(100);
@@ -131,17 +132,27 @@ public class TetrisView extends Application implements Observer {
         AnchorPane.setLeftAnchor(iv3, 25.);
         AnchorPane.setTopAnchor(iv3, 60.);
 
-        final AnchorPane root = new AnchorPane();
-        root.getChildren().setAll(scoreLabel, scoreValue, buttonNewGame, buttonPause, border, iv3, gridPane);
 
-        Image im = new Image("/fr/polytech/tetris/bg.jpg");
+        Image im = new Image("/fr/polytech/tetris/ressources/bg.jpg");
         BackgroundSize backgroundSize = new BackgroundSize(GRID_WIDTH * SIZE_CASE + 400, GRID_HEIGHT * SIZE_CASE, false, false, false, false);
+
+        final AnchorPane root = new AnchorPane();
+        root.getChildren().setAll(scoreLabel, scoreValue, buttonNewGame, buttonPause, border, iv3, previousPane);
+
         root.setBackground(new Background(new BackgroundImage(im, BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, backgroundSize)));
 
         final Scene scene = new Scene(root, GRID_WIDTH * SIZE_CASE + 400, GRID_HEIGHT * SIZE_CASE);
-        primaryStage.getIcons().add(logo);
         scene.setOnKeyPressed(controller);
 
+        // Sons
+        String sound = "src/fr/polytech/tetris/ressources/song.mp3";
+        Media media = new Media(new File(sound).toURI().toString());
+        MediaPlayer mp = new MediaPlayer(media);
+        mp.play();
+
+
+        // Primary Stage
+        primaryStage.getIcons().add(logo);
         primaryStage.setTitle("Tetris");
         primaryStage.setResizable(false);
         primaryStage.setScene(scene);
@@ -152,78 +163,46 @@ public class TetrisView extends Application implements Observer {
     /**
      * Initialisation de la Grid
      */
-    private void initializeGridPane() {
-        gPane.setGridLinesVisible(true);
-        for (int i = 0; i < GRID_WIDTH; i++) {
-            for (int j = 0; j < GRID_HEIGHT; j++) {
-                Rectangle rectangle = new Rectangle(SIZE_CASE, SIZE_CASE);
-                rectangle.setFill(GRID_COLOR);
-                rectangle.setStroke(BLACK);
-                rectangle.setStrokeWidth(1);
-                gPane.add(rectangle, i, j);
-            }
-        }
-
-        // Add constraints
-        for (int i = 0; i < GRID_WIDTH; i++) {
-            ColumnConstraints column = new ColumnConstraints(SIZE_CASE);
-            gPane.getColumnConstraints().add(column);
-        }
-        for (int j = 0; j < GRID_HEIGHT; j++) {
-            RowConstraints row = new RowConstraints(SIZE_CASE);
-            gPane.getRowConstraints().add(row);
-        }
-        //GridPane gridPreviousPane = controller.getBoard();
-
-        gPane.setMaxSize(SIZE_CASE * GRID_WIDTH, SIZE_CASE * GRID_HEIGHT);
-        //gridPreviousPane.setMaxSize(SIZE_CASE * PREVIOUS_GRID_WIDTH, SIZE_CASE * PREVIOUS_GRID_HEIGHT);
-
-    }
-
-    private void initializePreviousGridPane() {
+    private void initializeGrid(GridPane gridPane, int width, int height, Color gridColor, int sizeCase) {
         gridPane.setGridLinesVisible(true);
-        for (int i = 0; i < PREVIOUS_GRID_WIDTH; i++) {
-            for (int j = 0; j < PREVIOUS_GRID_HEIGHT; j++) {
-                Rectangle rectangle = new Rectangle(SIZE_CASE, SIZE_CASE);
-                rectangle.setFill(PREVIOUS_GRID_COLOR);
-                rectangle.setStroke(BLACK);
+        for (int i = 0; i < width; i++) {
+            for (int j = 0; j < height; j++) {
+                Rectangle rectangle = new Rectangle(sizeCase, sizeCase);
+                rectangle.setFill(gridColor);
+                rectangle.setStroke(gridColor);
                 rectangle.setStrokeWidth(1);
                 gridPane.add(rectangle, i, j);
             }
         }
 
-        // Add constraints
-        for (int i = 0; i < PREVIOUS_GRID_WIDTH; i++) {
-            ColumnConstraints column = new ColumnConstraints(SIZE_CASE);
+        // Ajout des contraintes
+        for (int i = 0; i < width; i++) {
+            ColumnConstraints column = new ColumnConstraints(sizeCase);
             gridPane.getColumnConstraints().add(column);
         }
-        for (int j = 0; j < PREVIOUS_GRID_HEIGHT; j++) {
-            RowConstraints row = new RowConstraints(SIZE_CASE);
+        for (int j = 0; j < height; j++) {
+            RowConstraints row = new RowConstraints(sizeCase);
             gridPane.getRowConstraints().add(row);
         }
-        //GridPane gridPreviousPane = controller.getBoard();
-
-        gridPane.setMaxSize(SIZE_CASE * PREVIOUS_GRID_WIDTH, SIZE_CASE * PREVIOUS_GRID_HEIGHT);
-        //gridPreviousPane.setMaxSize(SIZE_CASE * PREVIOUS_GRID_WIDTH, SIZE_CASE * PREVIOUS_GRID_HEIGHT);
-
+        gridPane.setMaxSize(sizeCase * width, sizeCase * height);
     }
 
     @Override
     public void update(Observable o, Object arg) {
         BoardTetris board = (BoardTetris) o;
         scoreValue.setText(board.getScore() + "");
-        GridTetris grid = (GridTetris)board.getGrid();
+        GridTetris grid = (GridTetris) board.getGrid();
 
-        if(((GridTetris) board.getGrid()).isGameOver()){
+        if (((GridTetris) board.getGrid()).isGameOver()) {
             controller.getBoard().newGame();
         }
 
         // On nettoie la grille
         for (int i = 0; i < PREVIOUS_GRID_HEIGHT; i++) {
             for (int j = 0; j < PREVIOUS_GRID_WIDTH; j++) {
-                Node object = gridPane.getChildren().get(i + (j * PREVIOUS_GRID_HEIGHT) + 1);
+                Node object = previousPane.getChildren().get(i + (j * PREVIOUS_GRID_HEIGHT) + 1);
                 if (object instanceof Rectangle) {
-                    Rectangle current = (Rectangle) gridPane.getChildren().get(i + (j * PREVIOUS_GRID_HEIGHT) + 1);
+                    Rectangle current = (Rectangle) previousPane.getChildren().get(i + (j * PREVIOUS_GRID_HEIGHT) + 1);
                     current.setFill(BLACK);
                 }
             }
@@ -232,7 +211,7 @@ public class TetrisView extends Application implements Observer {
         int[][] matrixPiece = grid.getNextPiece().getMatrix();
         for (int i = 0; i < matrixPiece.length; i++) {
             for (int j = 0; j < matrixPiece[0].length; j++) {
-                Node object = gridPane.getChildren().get((i+1) * 5 + j + 2 );
+                Node object = previousPane.getChildren().get((i + 1) * 5 + j + 2);
                 if (object instanceof Rectangle && matrixPiece[i][j] != 0) {
                     Rectangle current = (Rectangle) object;
                     current.setFill(grid.getNextPiece().getColor());

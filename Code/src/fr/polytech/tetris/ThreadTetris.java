@@ -22,11 +22,11 @@ public class ThreadTetris implements Runnable {
     @Override
     public void run() {
         try {
-            while(!board.isStop() && !grid.isGameOver()){
+            while (!board.isStop() && !grid.isGameOver()) {
                 Thread.sleep(300);
                 board.movePiece(1, 0);
 
-                if(grid.isGameOver()) {
+                if (grid.isGameOver()) {
                     JOptionPane.showMessageDialog(null, "Perdu");
                     Thread.currentThread().interrupt();
                 }
