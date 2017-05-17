@@ -4,6 +4,12 @@ import static javafx.scene.paint.Color.BLUE;
 
 /**
  * Created by REZIGA on 14/05/2017.
+ * Classe qui définit une pièce de type L
+ *  _
+ * | |
+ * | |___
+ * |_____|
+ *
  */
 public class PieceL extends Piece{
     public PieceL(int posX, int posY, int gridHeight, int gridWidth) {

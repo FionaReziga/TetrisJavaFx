@@ -4,6 +4,12 @@ import static javafx.scene.paint.Color.GREEN;
 
 /**
  * Created by REZIGA on 14/05/2017.
+ * Classe qui définit une pièce de type S
+ *  ____
+ * |__  |__
+ *    |____|
+ *
+ *
  */
 public class PieceS extends Piece {
     public PieceS(int posX, int posY, int gridHeight, int gridWidth) {

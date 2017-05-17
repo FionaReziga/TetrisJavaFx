@@ -1,3 +1,4 @@
+
 package fr.polytech.puzzle.model;
 
 import fr.polytech.library.model.Grid;
@@ -16,10 +17,19 @@ import static javafx.scene.paint.Color.RED;
 
 /**
  * Created by REZIGA on 15/05/2017.
+ * Classe qui définit la grille du puzzle
  */
 public class GridPuzzle extends Grid {
     List<Piece> pieceList;
 
+    /**
+     * Constructeur de la grille
+     * @param width
+     * @param height
+     * @param sizeCase
+     * @param color
+     * @param level
+     */
     public GridPuzzle(int width, int height, int sizeCase, Color color, int level) {
         super(width, height, sizeCase, color);
         this.currentPiece = new PieceLittleI(2, 0, PUZZLE_GRID_HEIGHT, PUZZLE_GRID_WIDTH);
@@ -29,6 +39,10 @@ public class GridPuzzle extends Grid {
         fillCaseFulled();
     }
 
+    /**
+     * Initialisation de la liste des pièces
+     * @param level
+     */
     private void initializePieceList(int level) {
         pieceList = new ArrayList<>();
         List<Piece> pieceHorizontalList = asList(

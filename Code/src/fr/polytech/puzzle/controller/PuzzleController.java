@@ -7,6 +7,7 @@ import javafx.scene.paint.Color;
 
 /**
  * Created by REZIGA on 16/05/2017.
+ * Classe qui définit un le controlleur du jeu PUZZLE
  */
 public class PuzzleController implements EventHandler<KeyEvent> {
     BoardPuzzle board;

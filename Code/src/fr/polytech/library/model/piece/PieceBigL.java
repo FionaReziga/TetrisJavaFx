@@ -2,6 +2,12 @@ package fr.polytech.library.model.piece;
 
 /**
  * Created by REZIGA on 14/05/2017.
+ * Classe qui définit une pièce de type BIG L
+ *  _
+ * | |
+ * | |
+ * | |____
+ * |______|
  */
 public class PieceBigL extends Piece{
 

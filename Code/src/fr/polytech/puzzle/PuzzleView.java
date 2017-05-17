@@ -15,6 +15,7 @@ import static javafx.scene.paint.Color.BLACK;
 
 /**
  * Created by REZIGA on 14/05/2017.
+ * Classe qui définit la vue du Puzzle
  */
 public class PuzzleView extends Application {
     public final static int PUZZLE_GRID_WIDTH = 6;

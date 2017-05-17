@@ -6,6 +6,10 @@ import static javafx.scene.paint.Color.GREY;
 
 /**
  * Created by REZIGA on 16/05/2017.
+ * Classe qui définit une pièce de type petit I
+ *  _
+ * | |
+ * |_|
  */
 public class PieceLittleI extends Piece {
     public PieceLittleI(int posX, int posY, int gridHeight, int gridWidth) {

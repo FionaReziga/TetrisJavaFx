@@ -7,6 +7,7 @@ import javax.swing.*;
 
 /**
  * Created by REZIGA on 16/05/2017.
+ * Classe qui génère le thread du jeu TETRIS
  */
 public class ThreadTetris implements Runnable {
     private BoardTetris board;

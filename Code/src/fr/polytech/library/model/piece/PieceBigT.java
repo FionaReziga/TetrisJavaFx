@@ -2,6 +2,12 @@ package fr.polytech.library.model.piece;
 
 /**
  * Created by REZIGA on 15/05/2017.
+ * Classe qui définit une pièce de type Big T
+ *  _____
+ * |_   _|
+ *   | |
+ *   | |
+ *   |_|
  */
 public class PieceBigT extends Piece {
 

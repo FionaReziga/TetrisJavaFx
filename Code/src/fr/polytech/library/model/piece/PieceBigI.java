@@ -6,6 +6,13 @@ import static javafx.scene.paint.Color.CYAN;
 
 /**
  * Created by REZIGA on 14/05/2017.
+ * Classe qui définit une pièce de type BIG I
+ *  _
+ * | |
+ * | |
+ * | |
+ * |_|
+ *
  */
 public class PieceBigI extends Piece {
     public PieceBigI(int posX, int posY, int gridHeight, int gridWidth) {
@@ -20,6 +27,10 @@ public class PieceBigI extends Piece {
         setMatrix(matrix);
     }
 
+    /**
+     * Renvoie la couleur de la pièce
+     * @return color
+     */
     public Color getColor() {
         return color;
     }

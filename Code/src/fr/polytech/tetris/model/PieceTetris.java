@@ -12,12 +12,18 @@ import static java.util.Arrays.asList;
 
 /**
  * Created by REZIGA on 15/05/2017.
+ * Classe qui définit les pièces du Tetris
  */
 public class PieceTetris extends Piece {
     public PieceTetris(int posX, int posY, int gridHeight, int gridWidth) {
         super(posX, posY, gridHeight, gridWidth);
     }
 
+    /**
+     * Fonction qui génère alétoirement une pièce
+     * @param caseFulled
+     * @return
+     */
     public static Piece generateRandomPiece(Color[][] caseFulled) {
         List<Piece> pieceList = new ArrayList<>();
         pieceList.addAll(asList(

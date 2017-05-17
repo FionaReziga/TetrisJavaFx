@@ -8,6 +8,7 @@ import javafx.scene.paint.Color;
 
 /**
  * Created by REZIGA on 16/05/2017.
+ * Classe qui définit le controleur du jeu TETRIS
  */
 public class TetrisController implements EventHandler<KeyEvent> {
     private BoardTetris board;
@@ -15,12 +16,23 @@ public class TetrisController implements EventHandler<KeyEvent> {
     private ThreadTetris threadTetris;
 
 
+    /**
+     * Controleur
+     * @param width
+     * @param height
+     * @param sizeCase
+     * @param color
+     */
     public TetrisController(int width, int height, int sizeCase, Color color) {
         board = new BoardTetris(width, height, sizeCase, color);
         threadTetris = new ThreadTetris(board);
         pause = false;
     }
 
+    /**
+     * Renvoie le plateau du Tetris
+     * @return
+     */
     public BoardTetris getBoard() {
         return board;
     }

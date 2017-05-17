@@ -6,6 +6,12 @@ import static javafx.scene.paint.Color.YELLOW;
 
 /**
  * Created by REZIGA on 14/05/2017.
+ * Classe qui définit une pièce de type I
+ *  _
+ * | |
+ * | |
+ * |_|
+ *
  */
 public class PieceI extends Piece {
     public PieceI(int posX, int posY, int gridHeight, int gridWidth) {

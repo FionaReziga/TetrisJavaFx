@@ -5,6 +5,7 @@ import javafx.scene.paint.Color;
 
 /**
  * Created by REZIGA on 14/05/2017.
+ * Classe qui définit la grille du plateau de jeu
  */
 public class Grid {
 
@@ -15,6 +16,13 @@ public class Grid {
     protected Color[][] caseFulled;
     protected Piece currentPiece;
 
+    /**
+     * Constructeur de la Grille
+     * @param width
+     * @param height
+     * @param sizeCase
+     * @param color
+     */
     public Grid(int width, int height, int sizeCase, Color color) {
         this.width = width;
         this.height = height;
@@ -23,7 +31,10 @@ public class Grid {
         initializeMapCases();
     }
 
-    protected void initializeMapCases() {
+    /**
+     *
+     */
+    private void initializeMapCases() {
         caseFulled = new Color[height][width];
         for (int i = 0; i < caseFulled.length; i++) {
             for (int j = 0; j < caseFulled[0].length; j++) {
@@ -32,6 +43,12 @@ public class Grid {
         }
     }
 
+    /**
+     * Fonction qui fait bouger la pièce courante
+     * @param offsetX
+     * @param offsetY
+     * @return
+     */
     public boolean movePiece(int offsetX, int offsetY) {
         boolean movePiece = !currentPiece.move(offsetX, offsetY, caseFulled);
         if (movePiece) {
@@ -40,10 +57,16 @@ public class Grid {
         return movePiece;
     }
 
+    /**
+     * Procédure qui permet de faire tourner une pièce
+     */
     public void rotatePiece() {
         currentPiece.rotate(caseFulled);
     }
 
+    /**
+     * Procédure qui sauvegarde la position de la pièce
+     */
     public void savePiece() {
         int[][] matrix = currentPiece.getMatrix();
         for (int i = 0; i < matrix.length; i++) {
@@ -55,18 +78,34 @@ public class Grid {
         }
     }
 
+    /**
+     * Fonction qui retourne la largeur de la grille
+     * @return width
+     */
     public int getWidth() {
         return width;
     }
 
+    /**
+     * Fonction qui retourne la longueur de la grille
+     * @return height
+     */
     public int getHeight() {
         return height;
     }
 
+    /**
+     * Fonction qui retourne une caseFulled
+     * @return caseFulled
+     */
     public Color[][] getCaseFulled() {
         return caseFulled;
     }
 
+    /**
+     * Fonction qui retourne la pièce courante
+     * @return currentPiece
+     */
     public Piece getCurrentPiece() {
         return currentPiece;
     }

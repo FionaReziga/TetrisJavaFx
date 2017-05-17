@@ -9,6 +9,7 @@ import javafx.scene.Node;
 
 /**
  * Created by REZIGA on 14/05/2017.
+ * Classe qui génère une case, elle hérite de la classe Node
  */
 public class Case extends Node{
 

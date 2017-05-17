@@ -28,6 +28,7 @@ import static javafx.scene.paint.Color.WHITE;
 
 /**
  * Created by REZIGA on 14/05/2017.
+ * Classe qui génère la vue du jeu TETRIS
  */
 public class TetrisView extends Application implements Observer {
     public final static int GRID_WIDTH = 10;
@@ -49,6 +50,12 @@ public class TetrisView extends Application implements Observer {
         launch(args);
     }
 
+    /**
+     * Démarrage du jeu
+     * Démarrage du jeu
+     * @param primaryStage
+     * @throws Exception
+     */
     @Override
     public void stop() {
         controller.getBoard().setStop(true);
@@ -142,6 +149,9 @@ public class TetrisView extends Application implements Observer {
         primaryStage.show();
     }
 
+    /**
+     * Initialisation de la Grid
+     */
     private void initializeGridPane() {
         gPane.setGridLinesVisible(true);
         for (int i = 0; i < GRID_WIDTH; i++) {

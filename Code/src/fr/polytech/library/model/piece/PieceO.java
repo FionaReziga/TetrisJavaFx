@@ -4,6 +4,11 @@ import static javafx.scene.paint.Color.YELLOW;
 
 /**
  * Created by REZIGA on 14/05/2017.
+ * Classe qui définit une pièce de type O
+ *  ____
+ * |    |
+ * |____|
+
  */
 public class PieceO extends Piece {
     public PieceO(int posX, int posY, int gridHeight, int gridWidth) {

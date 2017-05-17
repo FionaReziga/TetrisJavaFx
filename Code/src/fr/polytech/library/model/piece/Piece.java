@@ -8,10 +8,12 @@ import java.util.stream.IntStream;
 
 /**
  * Created by REZIGA on 14/05/2017.
+ * Classe qui permet de définir une pièce
  */
 public abstract class Piece {
     private static long idCounter = 1;
 
+    //Propriétés
     private Long id;
     private int posX;
     private int posY;
@@ -21,6 +23,13 @@ public abstract class Piece {
 
     protected Color color;
 
+    /**
+     * Constructeur de la pièce
+     * @param posX
+     * @param posY
+     * @param gridHeight
+     * @param gridWidth
+     */
     public Piece(int posX, int posY, int gridHeight, int gridWidth) {
         this.id = idCounter++;
         this.posX = posX;
@@ -29,30 +38,61 @@ public abstract class Piece {
         this.gridWidth = gridWidth;
     }
 
+    /**
+     * Retourne la couleur de la pièce
+     * @return color
+     */
     public Color getColor() {
         return color;
     }
 
+    /**
+     * Retourne un tableu qui correspond à la matrice de la pièce
+     * @return
+     */
     public int[][] getMatrix() {
         return matrix;
     }
 
+    /**
+     * Définit la matrice de la pièce
+     * @param matrix
+     */
     public void setMatrix(int[][] matrix) {
         this.matrix = matrix;
     }
 
+    /**
+     * Retourne l'id de la pièce
+     * @return id
+     */
     public Long getId() {
         return id;
     }
 
+    /**
+     * Retourne la position X de la pièce qui correspond à la ligne
+     * @return X
+     */
     public int getPosX() {
         return posX;
     }
 
+    /**
+     * Retourne la position Y de la pièce qui correspond à la colonne
+     * @return Y
+     */
     public int getPosY() {
         return posY;
     }
 
+    /**
+     * Fonction qui permet de faire bouger la pièce et qui verifie les colisions
+     * @param offsetX
+     * @param offsetY
+     * @param caseFulled
+     * @return boolean
+     */
     public boolean move(int offsetX, int offsetY, Color[][] caseFulled) {
         int futurPosX = this.posX + offsetX;
         int futurPosY = this.posY + offsetY;
@@ -64,6 +104,10 @@ public abstract class Piece {
         return true;
     }
 
+    /**
+     * Fonction qui permet de faire tourner la pièce sur elle même et qui vérifie les colisions
+     * @param caseFulled
+     */
     public void rotate(Color[][] caseFulled) {
         int columns = this.matrix[0].length;
         int rows = this.matrix.length;
@@ -79,6 +123,12 @@ public abstract class Piece {
         if (!checkCollisions(caseFulled, newMatrix, null, null)) this.matrix = newMatrix;
     }
 
+    /**
+     * Fonction qui génère aléatoirement une pièce parmis une liste de pièces
+     * @param caseFulled
+     * @param pieceList
+     * @return
+     */
     public static Piece generateRandomPiece(Color[][] caseFulled, List<Piece> pieceList) {
         Piece piece = pieceList.get(new Random().nextInt(pieceList.size()));
         int rotate = (int) (Math.random() * 4);
@@ -86,6 +136,14 @@ public abstract class Piece {
         return piece;
     }
 
+    /**
+     * Fonction qui detecte les colisions avec la dernière ligne de la grille
+     * @param caseFulled
+     * @param matrix
+     * @param posX
+     * @param posY
+     * @return boolean
+     */
     private boolean checkCollisions(Color[][] caseFulled, int[][] matrix, Integer posX, Integer posY) {
         if (matrix != null) {
             // Cas d'une rotation
@@ -114,6 +172,14 @@ public abstract class Piece {
         return true;
     }
 
+    /**
+     * Fonction qui detecte les colisions avec d'autres pièces
+     * @param caseFulled
+     * @param matrix
+     * @param posX
+     * @param posY
+     * @return boolean
+     */
     private boolean checkPieceCollisions(Color[][] caseFulled, int[][] matrix, Integer posX, Integer posY) {
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[0].length; j++) {
@@ -124,6 +190,10 @@ public abstract class Piece {
         return false;
     }
 
+    /**
+     * Fonction qui définit la couleur de la pièce
+     * @param color
+     */
     public void setColor(Color color) {
         this.color = color;
     }

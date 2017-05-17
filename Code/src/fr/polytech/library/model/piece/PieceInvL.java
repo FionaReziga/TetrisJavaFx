@@ -4,6 +4,11 @@ import javafx.scene.paint.Color;
 
 /**
  * Created by REZIGA on 14/05/2017.
+ * Classe qui définit une pièce de type Inv L
+ *   ______
+ *  |_____ |
+ *       | |
+ *       |_|
  */
 public class PieceInvL extends Piece{
     public PieceInvL(int posX, int posY, int gridHeight, int gridWidth) {

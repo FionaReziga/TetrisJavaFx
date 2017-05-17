@@ -6,6 +6,7 @@ import java.util.Observable;
 
 /**
  * Created by REZIGA on 16/05/2017.
+ * Classe qui génère le plateau de jeu
  */
 public class Board  extends Observable {
     protected Grid grid;

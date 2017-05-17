@@ -12,6 +12,7 @@ import static javafx.scene.paint.Color.BLACK;
 
 /**
  * Created by REZIGA on 16/05/2017.
+ * Classe qui définit une Grid Pane
  */
 public class GPane extends GridPane implements Observer{
 
@@ -27,7 +28,9 @@ public class GPane extends GridPane implements Observer{
         int width = board.getGrid().getWidth();
         Color[][] caseFulled = board.getGrid().getCaseFulled();
 
-        // On nettoie la grille
+        /**
+         * On nettoie la grille
+         */
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
                 Node object = getChildren().get(i + (j * height) + 1);
@@ -38,7 +41,9 @@ public class GPane extends GridPane implements Observer{
             }
         }
 
-        // On parcourt la matrice concernant les pieces déjà dans la grille
+        /**
+         * On parcourt la matrice concernant les pieces déjà dans la grille
+         */
         for (int i = 0; i < caseFulled.length; i++) {
             for (int j = 0; j < caseFulled[0].length; j++) {
                 Node object = getChildren().get(i + (j * height) + 1);
@@ -49,7 +54,9 @@ public class GPane extends GridPane implements Observer{
             }
         }
 
-        // Affichage de la pièce
+        /**
+         * Afficgae de la pièce
+         */
         int[][] matrixPiece = board.getGrid().getCurrentPiece().getMatrix();
         for (int i = 0; i < matrixPiece.length; i++) {
             for (int j = 0; j < matrixPiece[0].length; j++) {
