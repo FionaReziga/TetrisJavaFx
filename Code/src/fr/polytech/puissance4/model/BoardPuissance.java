@@ -5,7 +5,7 @@ package fr.polytech.puissance4.model;
 
 /**
  * Created by REZIGA on 14/05/2017.
- * Classe qui définit le plateau du Tetris
+ * Classe qui définit le plateau du Jeu Puissance 4
  */
 public class BoardPuissance extends Board {
     boolean gameOver;

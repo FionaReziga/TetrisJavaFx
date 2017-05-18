@@ -20,7 +20,7 @@ import static javafx.scene.paint.Color.BLUE;
 
 /**
  * Created by REZIGA on 14/05/2017.
- * Classe qui génère la vue du jeu TETRIS
+ * Classe qui génère la vue du jeu Puissance 4
  */
 public class PuissanceView extends Application implements Observer{
     public final static int GRID_WIDTH = 7;
@@ -35,6 +35,11 @@ public class PuissanceView extends Application implements Observer{
     }
 
 
+    /**
+     * Démarrage
+     * @param primaryStage
+     * @throws Exception
+     */
     @Override
     public void start(Stage primaryStage) throws Exception {
         controller = new PuissanceController(GRID_WIDTH, GRID_HEIGHT, SIZE_CASE, GRID_COLOR);
@@ -82,7 +87,11 @@ public class PuissanceView extends Application implements Observer{
         gridPane.setMaxSize(sizeCase * width, sizeCase * height);
     }
 
-
+    /**
+     * Mise à jour de la vue Puissance 4
+     * @param o
+     * @param arg
+     */
     @Override
     public void update(Observable o, Object arg) {
         BoardPuissance board = (BoardPuissance) o;

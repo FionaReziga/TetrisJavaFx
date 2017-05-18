@@ -52,8 +52,6 @@ public class TetrisView extends Application implements Observer {
 
     /**
      * Démarrage du jeu
-     * Démarrage du jeu
-     *
      * @throws Exception
      */
     @Override

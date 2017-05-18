@@ -45,6 +45,10 @@ public class GridPuissance extends Grid {
         return caseFulled;
     }
 
+    /**
+     * Verifie en cas de gagnant
+     * @return
+     */
     public boolean checkWinner() {
         boolean result = false;
         if(currentPiece.getPosX() == 0) result = true;
@@ -60,6 +64,10 @@ public class GridPuissance extends Grid {
         return result;
     }
 
+    /**
+     * Verifie si il y'a un gagnant dans une diagonale
+     * @return
+     */
     private boolean checkAntiDiagonals() {
         for (int i = 0; i < height - 3; i++) {
             for (int j = 0; j < width - 3; j++) {
@@ -73,6 +81,10 @@ public class GridPuissance extends Grid {
         return false;
     }
 
+    /**
+     * Verifie si il y'a un gagnant dans une diagonale
+     * @return
+     */
     private boolean checkDiagonals() {
         for (int i = 0; i < height - 3; i++) {
             for (int j = 3; j < width; j++) {
@@ -86,6 +98,11 @@ public class GridPuissance extends Grid {
         return false;
     }
 
+    /**
+     * Verifie si il y'a un gagnant dans une ligne
+     * @param i
+     * @return
+     */
     private boolean checkRows(int i) {
         int nbColor = 1;
         Color color = caseFulled[i][0];
@@ -104,6 +121,11 @@ public class GridPuissance extends Grid {
         return false;
     }
 
+    /**
+     * Verifie si il y'a un gagnant dans une colonne
+     * @param j
+     * @return
+     */
     private boolean checkColumns(int j) {
         int nbColor = 1;
         Color color = caseFulled[0][j];

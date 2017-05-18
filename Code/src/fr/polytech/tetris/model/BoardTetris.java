@@ -72,6 +72,9 @@ public class BoardTetris extends Board {
         this.score += score;
     }
 
+    /**
+     * Nouveau jeu
+     */
     public void newGame() {
         score = 0;
         GridTetris currentGrid = (GridTetris) grid;
@@ -79,10 +82,18 @@ public class BoardTetris extends Board {
         ((GridTetris) grid).setGameOver(false);
     }
 
+    /**
+     * Renvoie le statut run
+     * @return
+     */
     public boolean isRun() {
         return run;
     }
 
+    /**
+     * Définit le statut run
+     * @param run
+     */
     public void setRun(boolean run) {
         this.run = run;
     }

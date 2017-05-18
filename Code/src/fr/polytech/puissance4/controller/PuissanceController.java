@@ -7,7 +7,7 @@ import javafx.scene.paint.Color;
 
 /**
  * Created by REZIGA on 16/05/2017.
- * Classe qui définit le controleur du jeu TETRIS
+ * Classe qui définit le controleur du jeu Puissance 4
  */
 public class PuissanceController implements EventHandler<KeyEvent> {
     private BoardPuissance board;
