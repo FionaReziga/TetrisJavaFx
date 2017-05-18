@@ -4,6 +4,7 @@ import fr.polytech.library.view.GPane;
 import fr.polytech.puissance4.controller.PuissanceController;
 import fr.polytech.puissance4.model.BoardPuissance;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.layout.*;
@@ -16,12 +17,13 @@ import java.util.Observable;
 import java.util.Observer;
 
 import static javafx.scene.paint.Color.*;
+import static javax.swing.JOptionPane.YES_NO_OPTION;
 
 /**
  * Created by REZIGA on 14/05/2017.
  * Classe qui génère la vue du jeu Puissance 4
  */
-public class PuissanceView extends Application implements Observer{
+public class PuissanceView extends Application implements Observer {
     public final static int GRID_WIDTH = 7;
     public final static int GRID_HEIGHT = 7;
     private final static int SIZE_CASE = 100;
@@ -36,6 +38,7 @@ public class PuissanceView extends Application implements Observer{
 
     /**
      * Démarrage
+     *
      * @param primaryStage
      * @throws Exception
      */
@@ -70,7 +73,7 @@ public class PuissanceView extends Application implements Observer{
         gridPane.setGridLinesVisible(true);
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
-                Circle circle = new Circle(sizeCase/ 2 - 1, gridColor);
+                Circle circle = new Circle(sizeCase / 2 - 1, gridColor);
                 circle.setFill(j == 0 ? BLUE : BLACK);
                 gridPane.add(circle, i, j);
             }
@@ -90,18 +93,24 @@ public class PuissanceView extends Application implements Observer{
 
     /**
      * Mise à jour de la vue Puissance 4
+     *
      * @param o
      * @param arg
      */
     @Override
     public void update(Observable o, Object arg) {
         BoardPuissance board = (BoardPuissance) o;
-        if(board.gameOver()) {
+        if (board.gameOver()) {
             String message = "Match nul !";
-            if(board.getGrid().getWinnerColor() == RED)  message = "Joueur rouge gagne !";
-            if(board.getGrid().getWinnerColor() == ORANGE)  message = "Joueur orange gagne !";
-            JOptionPane.showMessageDialog(null, message);
-            controller.newGame();
+            if (board.getGrid().getWinnerColor() == RED) message = "Joueur rouge gagne !";
+            if (board.getGrid().getWinnerColor() == ORANGE) message = "Joueur orange gagne !";
+            int dialogResult = JOptionPane.showConfirmDialog(null, message + " Voulez-vous rejouer ?", "Fin de la partie", YES_NO_OPTION);
+            if (dialogResult == JOptionPane.YES_OPTION) {
+                controller.newGame();
+            } else {
+                Platform.exit();
+                System.exit(0);
+            }
         }
     }
 }
