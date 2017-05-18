@@ -2,20 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Code/fr/polytech/puissance4/PuissanceView.class" afterPath="$PROJECT_DIR$/out/production/Code/fr/polytech/puissance4/PuissanceView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Code/fr/polytech/puissance4/controller/PuissanceController.class" afterPath="$PROJECT_DIR$/out/production/Code/fr/polytech/puissance4/controller/PuissanceController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Code/fr/polytech/puissance4/model/BoardPuissance.class" afterPath="$PROJECT_DIR$/out/production/Code/fr/polytech/puissance4/model/BoardPuissance.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Code/fr/polytech/puissance4/model/GridPuissance.class" afterPath="$PROJECT_DIR$/out/production/Code/fr/polytech/puissance4/model/GridPuissance.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Code/fr/polytech/tetris/TetrisView.class" afterPath="$PROJECT_DIR$/out/production/Code/fr/polytech/tetris/TetrisView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Code/fr/polytech/tetris/controller/TetrisController.class" afterPath="$PROJECT_DIR$/out/production/Code/fr/polytech/tetris/controller/TetrisController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Code/fr/polytech/tetris/model/PieceTetris.class" afterPath="$PROJECT_DIR$/out/production/Code/fr/polytech/tetris/model/PieceTetris.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/fr/polytech/puissance4/PuissanceView.java" afterPath="$PROJECT_DIR$/src/fr/polytech/puissance4/PuissanceView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/fr/polytech/puissance4/controller/PuissanceController.java" afterPath="$PROJECT_DIR$/src/fr/polytech/puissance4/controller/PuissanceController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/fr/polytech/puissance4/model/BoardPuissance.java" afterPath="$PROJECT_DIR$/src/fr/polytech/puissance4/model/BoardPuissance.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/fr/polytech/puissance4/model/GridPuissance.java" afterPath="$PROJECT_DIR$/src/fr/polytech/puissance4/model/GridPuissance.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/fr/polytech/tetris/TetrisView.java" afterPath="$PROJECT_DIR$/src/fr/polytech/tetris/TetrisView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/fr/polytech/tetris/controller/TetrisController.java" afterPath="$PROJECT_DIR$/src/fr/polytech/tetris/controller/TetrisController.java" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -74,29 +63,53 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="GridPuissance.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/fr/polytech/puissance4/model/GridPuissance.java">
+      <file leaf-file-name="TetrisView.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/fr/polytech/tetris/TetrisView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="130">
-              <caret line="86" column="44" lean-forward="true" selection-start-line="86" selection-start-column="20" selection-end-line="86" selection-end-column="44" />
+            <state relative-caret-position="86">
+              <caret line="39" column="44" lean-forward="false" selection-start-line="39" selection-start-column="44" selection-end-line="39" selection-end-column="44" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#4685#4686#0" expanded="true" />
-                <element signature="e#4716#4717#0" expanded="true" />
-                <element signature="e#4753#4754#0" expanded="true" />
-                <element signature="e#4787#4788#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PuissanceView.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/fr/polytech/puissance4/PuissanceView.java">
+      <file leaf-file-name="ThreadTetris.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/fr/polytech/tetris/ThreadTetris.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="25" column="43" lean-forward="false" selection-start-line="25" selection-start-column="43" selection-end-line="25" selection-end-column="43" />
+            <state relative-caret-position="119">
+              <caret line="10" column="3" lean-forward="false" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="3" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GridPuissance.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/fr/polytech/puissance4/model/GridPuissance.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="489">
+              <caret line="188" column="25" lean-forward="true" selection-start-line="188" selection-start-column="25" selection-end-line="188" selection-end-column="25" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#5119#5120#0" expanded="true" />
+                <element signature="e#5150#5151#0" expanded="true" />
+                <element signature="e#5187#5188#0" expanded="true" />
+                <element signature="e#5221#5222#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PuissanceView.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/fr/polytech/puissance4/PuissanceView.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="557">
+              <caret line="112" column="13" lean-forward="false" selection-start-line="112" selection-start-column="13" selection-end-line="112" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1054#1055#0" expanded="true" />
+                <element signature="e#1082#1083#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -106,9 +119,31 @@
         <entry file="file://$PROJECT_DIR$/src/fr/polytech/library/model/Grid.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="221">
-              <caret line="74" column="0" lean-forward="false" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
+              <caret line="75" column="0" lean-forward="false" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
               <folding>
-                <marker date="1495057666782" expanded="true" signature="116:158" ph="/**...*/" />
+                <marker date="1495107795141" expanded="true" signature="116:158" ph="/**...*/" />
+                <marker date="1495107795141" expanded="true" signature="768:801" ph="/**...*/" />
+                <marker date="1495107795141" expanded="true" signature="842:1076" ph="{...}" />
+                <marker date="1495107795141" expanded="true" signature="1082:1202" ph="/**...*/" />
+                <marker date="1495107795141" expanded="true" signature="1258:1429" ph="{...}" />
+                <marker date="1495107795141" expanded="true" signature="1435:1501" ph="/**...*/" />
+                <marker date="1495107795141" expanded="false" signature="1531:1542" ph=" { " />
+                <marker date="1495107795141" expanded="false" signature="1574:1580" ph=" }" />
+                <marker date="1495107795141" expanded="true" signature="1586:1653" ph="/**...*/" />
+                <marker date="1495107795141" expanded="true" signature="1682:2044" ph="{...}" />
+                <marker date="1495107795141" expanded="true" signature="2050:2135" ph="/**...*/" />
+                <marker date="1495107795141" expanded="false" signature="2161:2172" ph=" { " />
+                <marker date="1495107795141" expanded="false" signature="2185:2191" ph=" }" />
+                <marker date="1495107795141" expanded="true" signature="2197:2284" ph="/**...*/" />
+                <marker date="1495107795141" expanded="false" signature="2311:2322" ph=" { " />
+                <marker date="1495107795141" expanded="false" signature="2336:2342" ph=" }" />
+                <marker date="1495107795141" expanded="true" signature="2348:2429" ph="/**...*/" />
+                <marker date="1495107795141" expanded="false" signature="2466:2477" ph=" { " />
+                <marker date="1495107795141" expanded="false" signature="2495:2501" ph=" }" />
+                <marker date="1495107795141" expanded="true" signature="2507:2593" ph="/**...*/" />
+                <marker date="1495107795141" expanded="false" signature="2628:2639" ph=" { " />
+                <marker date="1495107795141" expanded="false" signature="2659:2665" ph=" }" />
+                <marker date="1495107795141" expanded="false" signature="2694:2705" ph=" { " />
               </folding>
             </state>
           </provider>
@@ -117,11 +152,25 @@
       <file leaf-file-name="PuissanceController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/fr/polytech/puissance4/controller/PuissanceController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="65">
-              <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+            <state relative-caret-position="489">
+              <caret line="55" column="24" lean-forward="true" selection-start-line="55" selection-start-column="24" selection-end-line="55" selection-end-column="24" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#802#803#0" expanded="true" />
+                <element signature="e#830#831#0" expanded="true" />
+                <element signature="e#1566#1567#0" expanded="true" />
+                <element signature="e#1608#1609#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GridTetris.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/fr/polytech/tetris/model/GridTetris.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="222">
+              <caret line="118" column="0" lean-forward="false" selection-start-line="118" selection-start-column="0" selection-end-line="122" selection-end-column="5" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -129,12 +178,36 @@
       <file leaf-file-name="BoardPuissance.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/fr/polytech/puissance4/model/BoardPuissance.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="521">
-              <caret line="46" column="14" lean-forward="false" selection-start-line="46" selection-start-column="14" selection-end-line="46" selection-end-column="14" />
+            <state relative-caret-position="472">
+              <caret line="54" column="22" lean-forward="true" selection-start-line="54" selection-start-column="22" selection-end-line="54" selection-end-column="22" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1291#1292#0" expanded="true" />
-                <element signature="e#1334#1335#0" expanded="true" />
+                <element signature="e#1300#1301#0" expanded="true" />
+                <element signature="e#1343#1344#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BoardTetris.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/fr/polytech/tetris/model/BoardTetris.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="166">
+              <caret line="74" column="0" lean-forward="false" selection-start-line="74" selection-start-column="0" selection-end-line="82" selection-end-column="5" />
+              <folding>
+                <marker date="1495109519830" expanded="true" signature="109:151" ph="/**...*/" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TetrisController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/fr/polytech/tetris/controller/TetrisController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="472">
+              <caret line="59" column="24" lean-forward="false" selection-start-line="59" selection-start-column="8" selection-end-line="59" selection-end-column="24" />
+              <folding>
+                <marker date="1495104627585" expanded="true" signature="229:271" ph="/**...*/" />
               </folding>
             </state>
           </provider>
@@ -228,14 +301,14 @@
         <option value="$PROJECT_DIR$/src/fr/polytech/library/view/GPane.java" />
         <option value="$PROJECT_DIR$/src/fr/polytech/library/model/Grid.java" />
         <option value="$PROJECT_DIR$/src/fr/polytech/tetris/model/GridTetris.java" />
-        <option value="$PROJECT_DIR$/src/fr/polytech/tetris/model/BoardTetris.java" />
         <option value="$PROJECT_DIR$/src/fr/polytech/tetris/ThreadTetris.java" />
-        <option value="$PROJECT_DIR$/src/fr/polytech/tetris/TetrisView.java" />
         <option value="$PROJECT_DIR$/src/fr/polytech/tetris/controller/TetrisController.java" />
+        <option value="$PROJECT_DIR$/src/fr/polytech/puissance4/model/GridPuissance.java" />
+        <option value="$PROJECT_DIR$/src/fr/polytech/tetris/model/BoardTetris.java" />
         <option value="$PROJECT_DIR$/src/fr/polytech/puissance4/model/BoardPuissance.java" />
         <option value="$PROJECT_DIR$/src/fr/polytech/puissance4/controller/PuissanceController.java" />
-        <option value="$PROJECT_DIR$/src/fr/polytech/puissance4/model/GridPuissance.java" />
         <option value="$PROJECT_DIR$/src/fr/polytech/puissance4/PuissanceView.java" />
+        <option value="$PROJECT_DIR$/src/fr/polytech/tetris/TetrisView.java" />
       </list>
     </option>
   </component>
@@ -306,6 +379,80 @@
               <option name="myItemId" value="polytech" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tetris" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Code" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Code" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="polytech" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tetris" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Code" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Code" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="polytech" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tetris" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controller" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Code" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Code" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="polytech" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -352,6 +499,32 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Code" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Code" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="polytech" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="puissance4" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controller" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -949,12 +1122,12 @@
       <workItem from="1494865821565" duration="9886000" />
       <workItem from="1494876429151" duration="2337000" />
       <workItem from="1494881127816" duration="95573000" />
-      <workItem from="1495105721131" duration="1989000" />
+      <workItem from="1495105721131" duration="4954000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="121792000" />
+    <option name="totallyTimeSpent" value="124757000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -991,7 +1164,7 @@
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.515778" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.515508" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1030,24 +1203,30 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/fr/polytech/puissance4/model/GridPuissance.java</url>
-          <line>53</line>
+          <line>57</line>
           <properties />
           <option name="timeStamp" value="257" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/fr/polytech/puissance4/model/GridPuissance.java</url>
-          <line>50</line>
+          <line>54</line>
           <properties />
           <option name="timeStamp" value="259" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/fr/polytech/puissance4/model/GridPuissance.java</url>
-          <line>83</line>
+          <line>87</line>
           <properties />
           <option name="timeStamp" value="260" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/fr/polytech/puissance4/model/GridPuissance.java</url>
+          <line>185</line>
+          <properties />
+          <option name="timeStamp" value="262" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="261" />
+      <option name="time" value="263" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
@@ -1281,22 +1460,8 @@
         <state relative-caret-position="255">
           <caret line="17" column="16" lean-forward="false" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="16" />
           <folding>
-            <element signature="e#414#415#0" expanded="true" />
-            <element signature="e#441#442#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/polytech/tetris/model/GridTetris.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1734">
-          <caret line="110" column="5" lean-forward="false" selection-start-line="110" selection-start-column="5" selection-end-line="110" selection-end-column="5" />
-          <folding>
-            <element signature="e#2859#2860#0" expanded="false" />
-            <element signature="e#2890#2891#0" expanded="false" />
-            <element signature="e#2939#2940#0" expanded="false" />
-            <element signature="e#2979#2980#0" expanded="false" />
-            <marker date="1495088767359" expanded="true" signature="227:269" ph="/**...*/" />
+            <element signature="e#414#415#0" expanded="false" />
+            <element signature="e#441#442#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1309,42 +1474,102 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/polytech/tetris/model/BoardTetris.java">
+    <entry file="file://$PROJECT_DIR$/src/fr/polytech/library/model/Grid.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1292">
-          <caret line="81" column="28" lean-forward="false" selection-start-line="81" selection-start-column="28" selection-end-line="81" selection-end-column="28" />
+        <state relative-caret-position="221">
+          <caret line="75" column="0" lean-forward="false" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#1930#1931#0" expanded="false" />
-            <element signature="e#1969#1970#0" expanded="false" />
-            <element signature="e#1999#2000#0" expanded="false" />
-            <marker date="1495088985575" expanded="true" signature="109:151" ph="/**...*/" />
+            <marker date="1495107795141" expanded="true" signature="116:158" ph="/**...*/" />
+            <marker date="1495107795141" expanded="true" signature="768:801" ph="/**...*/" />
+            <marker date="1495107795141" expanded="true" signature="842:1076" ph="{...}" />
+            <marker date="1495107795141" expanded="true" signature="1082:1202" ph="/**...*/" />
+            <marker date="1495107795141" expanded="true" signature="1258:1429" ph="{...}" />
+            <marker date="1495107795141" expanded="true" signature="1435:1501" ph="/**...*/" />
+            <marker date="1495107795141" expanded="false" signature="1531:1542" ph=" { " />
+            <marker date="1495107795141" expanded="false" signature="1574:1580" ph=" }" />
+            <marker date="1495107795141" expanded="true" signature="1586:1653" ph="/**...*/" />
+            <marker date="1495107795141" expanded="true" signature="1682:2044" ph="{...}" />
+            <marker date="1495107795141" expanded="true" signature="2050:2135" ph="/**...*/" />
+            <marker date="1495107795141" expanded="false" signature="2161:2172" ph=" { " />
+            <marker date="1495107795141" expanded="false" signature="2185:2191" ph=" }" />
+            <marker date="1495107795141" expanded="true" signature="2197:2284" ph="/**...*/" />
+            <marker date="1495107795141" expanded="false" signature="2311:2322" ph=" { " />
+            <marker date="1495107795141" expanded="false" signature="2336:2342" ph=" }" />
+            <marker date="1495107795141" expanded="true" signature="2348:2429" ph="/**...*/" />
+            <marker date="1495107795141" expanded="false" signature="2466:2477" ph=" { " />
+            <marker date="1495107795141" expanded="false" signature="2495:2501" ph=" }" />
+            <marker date="1495107795141" expanded="true" signature="2507:2593" ph="/**...*/" />
+            <marker date="1495107795141" expanded="false" signature="2628:2639" ph=" { " />
+            <marker date="1495107795141" expanded="false" signature="2659:2665" ph=" }" />
+            <marker date="1495107795141" expanded="false" signature="2694:2705" ph=" { " />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/fr/polytech/tetris/controller/TetrisController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="40" column="40" lean-forward="false" selection-start-line="40" selection-start-column="40" selection-end-line="40" selection-end-column="40" />
+        <state relative-caret-position="472">
+          <caret line="59" column="24" lean-forward="false" selection-start-line="59" selection-start-column="8" selection-end-line="59" selection-end-column="24" />
           <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#1431#1432#0" expanded="false" />
-            <element signature="e#1462#1463#0" expanded="false" />
-            <element signature="e#1492#1493#0" expanded="false" />
-            <element signature="e#1527#1528#0" expanded="false" />
             <marker date="1495104627585" expanded="true" signature="229:271" ph="/**...*/" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/polytech/tetris/TetrisView.java">
+    <entry file="file://$PROJECT_DIR$/src/fr/polytech/tetris/model/GridTetris.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="37" column="44" lean-forward="false" selection-start-line="37" selection-start-column="44" selection-end-line="37" selection-end-column="44" />
+        <state relative-caret-position="222">
+          <caret line="118" column="0" lean-forward="false" selection-start-line="118" selection-start-column="0" selection-end-line="122" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/polytech/puissance4/model/BoardPuissance.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="472">
+          <caret line="54" column="22" lean-forward="true" selection-start-line="54" selection-start-column="22" selection-end-line="54" selection-end-column="22" />
           <folding>
-            <element signature="e#1759#1760#0" expanded="false" />
-            <element signature="e#1796#1797#0" expanded="false" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#1300#1301#0" expanded="true" />
+            <element signature="e#1343#1344#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/polytech/puissance4/model/GridPuissance.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="489">
+          <caret line="188" column="25" lean-forward="true" selection-start-line="188" selection-start-column="25" selection-end-line="188" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#5119#5120#0" expanded="true" />
+            <element signature="e#5150#5151#0" expanded="true" />
+            <element signature="e#5187#5188#0" expanded="true" />
+            <element signature="e#5221#5222#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/polytech/tetris/model/BoardTetris.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="166">
+          <caret line="74" column="0" lean-forward="false" selection-start-line="74" selection-start-column="0" selection-end-line="82" selection-end-column="5" />
+          <folding>
+            <marker date="1495109519830" expanded="true" signature="109:151" ph="/**...*/" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/polytech/puissance4/controller/PuissanceController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="489">
+          <caret line="55" column="24" lean-forward="true" selection-start-line="55" selection-start-column="24" selection-end-line="55" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#802#803#0" expanded="true" />
+            <element signature="e#830#831#0" expanded="true" />
+            <element signature="e#1566#1567#0" expanded="true" />
+            <element signature="e#1608#1609#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1353,62 +1578,26 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="10" column="3" lean-forward="false" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="3" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/polytech/puissance4/controller/PuissanceController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="65">
-          <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/polytech/library/model/Grid.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="74" column="0" lean-forward="false" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
-          <folding>
-            <marker date="1495057666782" expanded="true" signature="116:158" ph="/**...*/" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/polytech/puissance4/model/BoardPuissance.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="521">
-          <caret line="46" column="14" lean-forward="false" selection-start-line="46" selection-start-column="14" selection-end-line="46" selection-end-column="14" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1291#1292#0" expanded="true" />
-            <element signature="e#1334#1335#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/polytech/puissance4/model/GridPuissance.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="86" column="44" lean-forward="true" selection-start-line="86" selection-start-column="20" selection-end-line="86" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#4685#4686#0" expanded="true" />
-            <element signature="e#4716#4717#0" expanded="true" />
-            <element signature="e#4753#4754#0" expanded="true" />
-            <element signature="e#4787#4788#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/fr/polytech/puissance4/PuissanceView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="25" column="43" lean-forward="false" selection-start-line="25" selection-start-column="43" selection-end-line="25" selection-end-column="43" />
+        <state relative-caret-position="557">
+          <caret line="112" column="13" lean-forward="false" selection-start-line="112" selection-start-column="13" selection-end-line="112" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1054#1055#0" expanded="true" />
+            <element signature="e#1082#1083#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/polytech/tetris/TetrisView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="86">
+          <caret line="39" column="44" lean-forward="false" selection-start-line="39" selection-start-column="44" selection-end-line="39" selection-end-column="44" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

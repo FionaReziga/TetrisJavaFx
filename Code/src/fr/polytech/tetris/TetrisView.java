@@ -5,6 +5,7 @@ import fr.polytech.tetris.controller.TetrisController;
 import fr.polytech.tetris.model.BoardTetris;
 import fr.polytech.tetris.model.GridTetris;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -28,6 +29,7 @@ import java.util.Observer;
 
 import static javafx.scene.paint.Color.BLACK;
 import static javafx.scene.paint.Color.WHITE;
+import static javax.swing.JOptionPane.YES_NO_OPTION;
 
 /**
  * Created by REZIGA on 14/05/2017.
@@ -35,7 +37,7 @@ import static javafx.scene.paint.Color.WHITE;
  */
 public class TetrisView extends Application implements Observer {
     public final static int GRID_WIDTH = 10;
-    public final static int GRID_HEIGHT = 20;
+    public final static int GRID_HEIGHT = 16;
     private final static int PREVIOUS_GRID_WIDTH = 5;
     private final static int PREVIOUS_GRID_HEIGHT = 5;
     private final static int SIZE_CASE = 30;
@@ -185,8 +187,13 @@ public class TetrisView extends Application implements Observer {
         GridTetris grid = (GridTetris) board.getGrid();
 
         if (((GridTetris) board.getGrid()).isGameOver()) {
-            JOptionPane.showMessageDialog(null, "Perdu !");
-            controller.getBoard().newGame();
+            int dialogResult = JOptionPane.showConfirmDialog (null, "Perdu ! Voulez-vous rejouer ?","Fin de la partie", YES_NO_OPTION);
+            if(dialogResult == JOptionPane.YES_OPTION){
+                controller.getBoard().newGame();
+            } else {
+                Platform.exit();
+                System.exit(0);
+            }
         }
 
         // On nettoie la grille

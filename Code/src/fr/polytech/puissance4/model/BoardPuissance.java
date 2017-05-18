@@ -46,5 +46,13 @@ public class BoardPuissance extends Board {
     public GridPuissance getGrid() {
         return (GridPuissance) grid;
     }
+
+    /**
+     * Réinitialise la grille
+     */
+    public void newGame() {
+        GridPuissance currentGrid = (GridPuissance) grid;
+        currentGrid.reset();
+    }
 }
 
