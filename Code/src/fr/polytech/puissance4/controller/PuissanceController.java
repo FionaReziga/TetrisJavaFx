@@ -52,11 +52,17 @@ public class PuissanceController implements EventHandler<KeyEvent> {
         }
     }
 
+    /**
+     * Nouveau jeu
+     */
     public void newGame() {
         board.newGame();
         initiliazeFirstPiece();
     }
 
+    /**
+     * Initialisation de la première pièce
+     */
     public void initiliazeFirstPiece() {
         getBoard().movePiece(0, 0);
     }

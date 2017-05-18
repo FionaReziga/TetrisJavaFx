@@ -38,11 +38,19 @@ public class BoardPuissance extends Board {
         return move;
     }
 
+    /**
+     * Fin du jeu
+     * @return
+     */
     public boolean gameOver(){
         GridPuissance currentGrid = (GridPuissance) grid;
         return currentGrid.isGameOver();
     }
 
+    /**
+     * Renvoie la grille du puissance 4
+     * @return
+     */
     public GridPuissance getGrid() {
         return (GridPuissance) grid;
     }

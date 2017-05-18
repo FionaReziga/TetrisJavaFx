@@ -174,14 +174,25 @@ public class GridPuissance extends Grid {
         return false;
     }
 
+    /**
+     * Renvoie la fin du jeu, gameOver
+     * @return
+     */
     public boolean isGameOver() {
         return gameOver;
     }
 
+    /**
+     * Renvoie la couleur du joueur gagnant
+     * @return
+     */
     public Color getWinnerColor() {
         return winnerColor;
     }
 
+    /**
+     * Reset du jeu, vide la grille, réinitialise la nouvelle pièce
+     */
     public void reset() {
         initializeMapCases();
         currentPiece = new PieceLittleO(0, 3, height, width);

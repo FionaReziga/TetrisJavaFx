@@ -72,6 +72,9 @@ public class GridPuzzle extends Grid {
 
     }
 
+    /**
+     * 
+     */
     private void fillCaseFulled() {
         pieceList.forEach(piece ->
         {
