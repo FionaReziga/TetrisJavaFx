@@ -50,25 +50,9 @@ public class GridTetris extends Grid {
     }
 
     /**
-     * Synchronisation des mouvements de la pièce
-     * @param offsetX
-     * @param offsetY
-     * @return
-     */
-    @Override
-    public synchronized boolean movePiece(int offsetX, int offsetY) {
-        boolean move = super.movePiece(offsetX, offsetY);
-        if(move) {
-            checkRowComplete();
-            generateNewPieceWithNextPiece();
-        }
-        return move;
-    }
-
-    /**
      * Génération d'une nouvelle pièce
      */
-    private void generateNewPieceWithNextPiece() {
+    protected void generateNewPieceWithNextPiece() {
         Piece piece = generateRandomPiece(caseFulled);
         if(checkFuturPiece(piece)) {
             currentPiece = nextPiece;
@@ -81,8 +65,9 @@ public class GridTetris extends Grid {
     /**
      * Vérifie si la ligne est complète
      */
-    public void checkRowComplete() {
+    public int checkRowComplete() {
         boolean checkRow;
+        int numberRowComplete = 0;
         for (int i = caseFulled.length - 1; i >= 0; i--) {
             checkRow = true;
             for (int j = 0; j < caseFulled[0].length; j++) {
@@ -91,8 +76,10 @@ public class GridTetris extends Grid {
             if (checkRow) {
                 clearOneRow(i);
                 i++;
+                numberRowComplete += 1;
             }
         }
+        return numberRowComplete;
     }
 
     /**
@@ -107,6 +94,12 @@ public class GridTetris extends Grid {
             }
         }
         return true;
+    }
+
+    public void reset() {
+        initializeMapCases();
+        currentPiece = generateRandomPiece(caseFulled);
+        nextPiece = generateRandomPiece(caseFulled);
     }
 
     public boolean isGameOver() {

@@ -58,17 +58,18 @@ public class TetrisView extends Application implements Observer {
      */
     @Override
     public void stop() {
-        controller.getBoard().setStop(true);
+        controller.stopGame();
     }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
         controller = new TetrisController(GRID_WIDTH, GRID_HEIGHT, SIZE_CASE, GRID_COLOR);
+        controller.getBoard().addObserver(this);
+
         BorderPane border = new BorderPane();
 
         GPane tetrisPane = new GPane(controller.getBoard());
         previousPane = new GridPane();
-        controller.getBoard().addObserver(this);
 
         initializeGrid(tetrisPane, GRID_WIDTH, GRID_HEIGHT, GRID_COLOR, SIZE_CASE);
         initializeGrid(previousPane, PREVIOUS_GRID_WIDTH, PREVIOUS_GRID_HEIGHT, PREVIOUS_GRID_COLOR, SIZE_CASE);
@@ -78,21 +79,6 @@ public class TetrisView extends Application implements Observer {
         // Boutons
         AnchorPane.setBottomAnchor(previousPane, 40.);
         AnchorPane.setRightAnchor(previousPane, 20.);
-
-        final Button buttonPause = new Button("Pause");
-        AnchorPane.setTopAnchor(buttonPause, 250.);
-        AnchorPane.setLeftAnchor(buttonPause, 30.);
-        buttonPause.setStyle("-fx-background-color: linear-gradient(#686868 0%, #232723 25%, #373837 75%, #757575 100%), linear-gradient(#020b02, #3a3a3a), linear-gradient(#9d9e9d 0%, #6b6a6b 20%, #343534 80%, #242424 100%), linear-gradient(#8a8a8a 0%, #6b6a6b 20%, #343534 80%, #262626 100%), linear-gradient(#777777 0%, #606060 50%, #505250 51%, #2a2b2a 100%); " + " -fx-background-insets: 0,1,4,5,6;  -fx-background-radius: 9,8,5,4,3;  -fx-padding: 10 52 10 52;  -fx-font-size: 15px;  -fx-font-weight: bold;  -fx-text-fill: whitesmoke;  -fx-effect: dropshadow( three-pass-box , rgba(255,255,255,0.2) , 1, 0.0 , 0 , 1)");
-
-        buttonPause.setOnAction(e -> {
-            if (controller.getBoard().isStop()) {
-                buttonPause.setText("  Go  !");
-                controller.getBoard().setStop(false);
-            } else {
-                buttonPause.setText(" Pause ");
-                controller.getBoard().setStop(true);
-            }
-        });
 
         final Button buttonNewGame = new Button("Nouvelle Partie");
         AnchorPane.setTopAnchor(buttonNewGame, 300.);
@@ -120,6 +106,7 @@ public class TetrisView extends Application implements Observer {
 
         AnchorPane.setLeftAnchor(border, 200.);
         AnchorPane.setBottomAnchor(border, 0.);
+        AnchorPane.setTopAnchor(border, 0.);
 
         // Images
 
@@ -137,9 +124,9 @@ public class TetrisView extends Application implements Observer {
         BackgroundSize backgroundSize = new BackgroundSize(GRID_WIDTH * SIZE_CASE + 400, GRID_HEIGHT * SIZE_CASE, false, false, false, false);
 
         final AnchorPane root = new AnchorPane();
-        root.getChildren().setAll(scoreLabel, scoreValue, buttonNewGame, buttonPause, border, iv3, previousPane);
+        root.getChildren().setAll(scoreLabel, scoreValue, buttonNewGame, border, iv3, previousPane);
 
-        root.setBackground(new Background(new BackgroundImage(im, BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, backgroundSize)));
+        root.setBackground(new Background(new BackgroundImage(im, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.CENTER, backgroundSize)));
 
         final Scene scene = new Scene(root, GRID_WIDTH * SIZE_CASE + 400, GRID_HEIGHT * SIZE_CASE);
         scene.setOnKeyPressed(controller);
@@ -190,7 +177,7 @@ public class TetrisView extends Application implements Observer {
     @Override
     public void update(Observable o, Object arg) {
         BoardTetris board = (BoardTetris) o;
-        scoreValue.setText(board.getScore() + "");
+        if (scoreValue != null) scoreValue.setText(board.getScore() + "");
         GridTetris grid = (GridTetris) board.getGrid();
 
         if (((GridTetris) board.getGrid()).isGameOver()) {
@@ -218,6 +205,5 @@ public class TetrisView extends Application implements Observer {
                 }
             }
         }
-
     }
 }
