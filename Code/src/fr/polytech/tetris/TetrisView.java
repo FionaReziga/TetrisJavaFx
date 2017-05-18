@@ -35,7 +35,7 @@ import static javafx.scene.paint.Color.WHITE;
  */
 public class TetrisView extends Application implements Observer {
     public final static int GRID_WIDTH = 10;
-    public final static int GRID_HEIGHT = 16;
+    public final static int GRID_HEIGHT = 20;
     private final static int PREVIOUS_GRID_WIDTH = 5;
     private final static int PREVIOUS_GRID_HEIGHT = 5;
     private final static int SIZE_CASE = 30;
@@ -181,6 +181,7 @@ public class TetrisView extends Application implements Observer {
         GridTetris grid = (GridTetris) board.getGrid();
 
         if (((GridTetris) board.getGrid()).isGameOver()) {
+            JOptionPane.showMessageDialog(null, "Perdu !");
             controller.getBoard().newGame();
         }
 

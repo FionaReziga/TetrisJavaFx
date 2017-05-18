@@ -8,7 +8,6 @@ package fr.polytech.puissance4.model;
  * Classe qui définit le plateau du Tetris
  */
 public class BoardPuissance extends Board {
-    boolean gameOver;
 
     /**
      * Constructeur du plateau de puissance 4
@@ -20,7 +19,6 @@ public class BoardPuissance extends Board {
     public BoardPuissance(int width, int height, int sizeCase, Color color) {
         super(width, height, sizeCase, color);
         grid = new GridPuissance(width, height, sizeCase, color);
-        gameOver = false;
     }
 
     /**
@@ -32,16 +30,21 @@ public class BoardPuissance extends Board {
         boolean move = grid.movePiece(offsetX, offsetY);
         GridPuissance currentGrid = (GridPuissance) grid;
         if(move) {
-            gameOver = currentGrid.checkWinner();
-            if(!gameOver) currentGrid.generateNewPiece();
+            currentGrid.checkWinner();
+            if(!currentGrid.isGameOver()) currentGrid.generateNewPiece();
         }
         setChanged();
         notifyObservers();
         return move;
     }
 
-    public boolean isGameOver() {
-        return gameOver;
+    public boolean gameOver(){
+        GridPuissance currentGrid = (GridPuissance) grid;
+        return currentGrid.isGameOver();
+    }
+
+    public GridPuissance getGrid() {
+        return (GridPuissance) grid;
     }
 }
 

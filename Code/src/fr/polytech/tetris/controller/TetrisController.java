@@ -2,7 +2,6 @@ package fr.polytech.tetris.controller;
 
 import fr.polytech.tetris.ThreadTetris;
 import fr.polytech.tetris.model.BoardTetris;
-import fr.polytech.tetris.model.GridTetris;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
@@ -18,6 +17,7 @@ public class TetrisController implements EventHandler<KeyEvent> {
 
     /**
      * Controleur
+     *
      * @param width
      * @param height
      * @param sizeCase
@@ -30,6 +30,7 @@ public class TetrisController implements EventHandler<KeyEvent> {
 
     /**
      * Renvoie le plateau du Tetris
+     *
      * @return
      */
     public BoardTetris getBoard() {
@@ -38,7 +39,6 @@ public class TetrisController implements EventHandler<KeyEvent> {
 
     @Override
     public void handle(KeyEvent event) {
-        GridTetris currentGrid = (GridTetris) board.getGrid();
         switch (event.getCode()) {
             case UP:
                 board.rotatePiece();

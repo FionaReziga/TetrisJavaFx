@@ -15,6 +15,7 @@ import static javafx.scene.paint.Color.RED;
 public class GridPuissance extends Grid {
     private boolean gameOver;
     private Color currentColor;
+    private Color winnerColor;
 
     /**
      * Constructeur
@@ -47,17 +48,46 @@ public class GridPuissance extends Grid {
 
     public boolean checkWinner() {
         boolean result = false;
-        if(currentPiece.getPosX() == 0) result = true;
+        if (checkAllCasesFulled()) {
+            result = true;
+            gameOver = true;
+            winnerColor = null;
+        }
+        else if (currentPiece.getPosX() == 0) {
+            result = true;
+            gameOver = true;
+            winnerColor = currentPiece.getColor() == RED ? ORANGE : RED;
+        }
         for (int i = 0; i < caseFulled.length; i++) {
-            if (checkRows(i)) result = true;
+            if (checkRows(i)) {
+                result = true;
+                gameOver = true;
+                winnerColor = currentPiece.getColor();
+            }
         }
         for (int j = 0; j < caseFulled[0].length; j++) {
-            if (checkColumns(j)) result = true;
-
+            if (checkColumns(j)) {
+                result = true;
+                gameOver = true;
+                winnerColor = currentPiece.getColor();
+            }
         }
-        if(checkAntiDiagonals()) result = true;
-        if(checkDiagonals()) result = true;
+        if (checkAntiDiagonals() || checkDiagonals()) {
+            result = true;
+            gameOver = true;
+            winnerColor = currentPiece.getColor();
+        }
         return result;
+    }
+
+    private boolean checkAllCasesFulled() {
+        boolean allCasesFulled = true;
+        for (int i = 1; i < height; i++) {
+            for (int j = 0; j < width ; j++) {
+                if (caseFulled[i][j] == null) allCasesFulled = false;
+            }
+        }
+        return allCasesFulled;
     }
 
     private boolean checkAntiDiagonals() {
@@ -120,5 +150,13 @@ public class GridPuissance extends Grid {
             }
         }
         return false;
+    }
+
+    public boolean isGameOver() {
+        return gameOver;
+    }
+
+    public Color getWinnerColor() {
+        return winnerColor;
     }
 }
