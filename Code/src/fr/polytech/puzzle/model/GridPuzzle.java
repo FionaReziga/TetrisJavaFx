@@ -13,7 +13,7 @@ import java.util.List;
 import static fr.polytech.puzzle.PuzzleView.PUZZLE_GRID_HEIGHT;
 import static fr.polytech.puzzle.PuzzleView.PUZZLE_GRID_WIDTH;
 import static java.util.Arrays.asList;
-import static javafx.scene.paint.Color.RED;
+import static javafx.scene.paint.Color.*;
 
 /**
  * Created by REZIGA on 15/05/2017.
@@ -21,6 +21,7 @@ import static javafx.scene.paint.Color.RED;
  */
 public class GridPuzzle extends Grid {
     List<Piece> pieceList;
+    private List<Color> colorList = asList(AQUAMARINE, LIGHTBLUE, CORNFLOWERBLUE, TURQUOISE, TEAL, ROYALBLUE, DARKTURQUOISE, PALETURQUOISE, DEEPSKYBLUE, DARKCYAN, DODGERBLUE);
 
     /**
      * Constructeur de la grille
@@ -65,7 +66,9 @@ public class GridPuzzle extends Grid {
                     new PieceI(0, 4, PUZZLE_GRID_HEIGHT, PUZZLE_GRID_WIDTH)
             ));
         }
-
+        for(int i = 0; i < colorList.size(); i ++){
+            pieceList.get(i).setColor(colorList.get(i));
+        }
 
     }
 
@@ -89,6 +92,7 @@ public class GridPuzzle extends Grid {
             }
         });
     }
+
 
     @Override
     public synchronized boolean movePiece(int offsetX, int offsetY) {

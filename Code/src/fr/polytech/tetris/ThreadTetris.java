@@ -22,8 +22,9 @@ public class ThreadTetris implements Runnable {
     @Override
     public void run() {
         try {
-            while (!board.isStop() && !grid.isGameOver()) {
-                Thread.sleep(300);
+            while (board.isRun()) {
+                int speed = 1000 - board.getScore();
+                Thread.sleep(speed < 150 ? 150 : speed);
                 board.movePiece(1, 0);
 
                 if (grid.isGameOver()) {

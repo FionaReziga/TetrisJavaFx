@@ -98,7 +98,7 @@ public abstract class Piece {
         int futurPosY = this.posY + offsetY;
 
         if (!checkCollisions(caseFulled, null, futurPosX, null)) this.posX = futurPosX;
-        else if (offsetX == 1 && offsetY == 0) return false;
+        else if (offsetX > 0 && offsetY == 0) return false;
         if (!checkCollisions(caseFulled, null, null, futurPosY)) this.posY = futurPosY;
 
         return true;

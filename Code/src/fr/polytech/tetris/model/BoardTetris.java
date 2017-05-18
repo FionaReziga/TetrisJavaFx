@@ -8,12 +8,12 @@ import javafx.scene.paint.Color;
  * Classe qui définit le plateau du Tetris
  */
 public class BoardTetris extends Board {
-    private boolean stop;
     private int score;
-    private int speed;
+    private boolean run;
 
     /**
      * Constructeur du plateau du Tetris
+     *
      * @param width
      * @param height
      * @param sizeCase
@@ -22,18 +22,25 @@ public class BoardTetris extends Board {
     public BoardTetris(int width, int height, int sizeCase, Color color) {
         super(width, height, sizeCase, color);
         grid = new GridTetris(width, height, sizeCase, color);
-        stop = false;
         score = 0;
-        speed = 1000;
+        run = true;
     }
 
     /**
      * Synchronisation des mouvements de la pièce
+     *
      * @param offsetX
      * @param offsetY
      */
     public synchronized void movePiece(int offsetX, int offsetY) {
-        grid.movePiece(offsetX, offsetY);
+        boolean move = grid.movePiece(offsetX, offsetY);
+        GridTetris currentGrid = (GridTetris) grid;
+        if (move) {
+            setScore(10);
+            int rowsComplete = currentGrid.checkRowComplete();
+            if (rowsComplete > 0) setScore(rowsComplete * 100);
+            currentGrid.generateNewPieceWithNextPiece();
+        }
         setChanged();
         notifyObservers();
     }
@@ -47,20 +54,9 @@ public class BoardTetris extends Board {
         notifyObservers();
     }
 
-    public int getSpeed() {
-        return (int) (score);
-    }
-
-    public void setStop(boolean stop) {
-        this.stop = stop;
-    }
-
-    public boolean isStop() {
-        return stop;
-    }
-
     /**
      * Renvoie le score du joueur
+     *
      * @return
      */
     public int getScore() {
@@ -69,6 +65,7 @@ public class BoardTetris extends Board {
 
     /**
      * Définit le score du joueur
+     *
      * @param score
      */
     public void setScore(int score) {
@@ -77,5 +74,16 @@ public class BoardTetris extends Board {
 
     public void newGame() {
         score = 0;
+        GridTetris currentGrid = (GridTetris) grid;
+        currentGrid.reset();
+        ((GridTetris) grid).setGameOver(false);
+    }
+
+    public boolean isRun() {
+        return run;
+    }
+
+    public void setRun(boolean run) {
+        this.run = run;
     }
 }

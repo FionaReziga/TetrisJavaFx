@@ -34,7 +34,7 @@ public class Grid {
     /**
      * Initialisation
      */
-    private void initializeMapCases() {
+    protected void initializeMapCases() {
         caseFulled = new Color[height][width];
         for (int i = 0; i < caseFulled.length; i++) {
             for (int j = 0; j < caseFulled[0].length; j++) {
@@ -108,5 +108,9 @@ public class Grid {
      */
     public Piece getCurrentPiece() {
         return currentPiece;
+    }
+
+    public Color getColor() {
+        return color;
     }
 }
