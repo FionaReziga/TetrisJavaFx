@@ -35,7 +35,7 @@ public class PuissanceController implements EventHandler<KeyEvent> {
 
     @Override
     public void handle(KeyEvent event) {
-        if (!board.isGameOver()) {
+        if (!board.getGrid().isGameOver()) {
             switch (event.getCode()) {
                 case DOWN:
                     for (int i = 0; i < board.getGrid().getHeight(); i++) {

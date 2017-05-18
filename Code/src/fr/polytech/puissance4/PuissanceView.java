@@ -15,8 +15,7 @@ import javax.swing.*;
 import java.util.Observable;
 import java.util.Observer;
 
-import static javafx.scene.paint.Color.BLACK;
-import static javafx.scene.paint.Color.BLUE;
+import static javafx.scene.paint.Color.*;
 
 /**
  * Created by REZIGA on 14/05/2017.
@@ -95,8 +94,11 @@ public class PuissanceView extends Application implements Observer{
     @Override
     public void update(Observable o, Object arg) {
         BoardPuissance board = (BoardPuissance) o;
-        if(board.isGameOver()) {
-            JOptionPane.showMessageDialog(null, board.getGrid().getCurrentPiece().getColor() == Color.RED ? "Joueur rouge gagne !" : "Joueur orange gagne !");
+        if(board.gameOver()) {
+            String message = "Match nul !";
+            if(board.getGrid().getWinnerColor() == RED)  message = "Joueur rouge gagne !";
+            if(board.getGrid().getWinnerColor() == ORANGE)  message = "Joueur orange gagne !";
+            JOptionPane.showMessageDialog(null, message);
         }
     }
 }
