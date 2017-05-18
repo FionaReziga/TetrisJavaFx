@@ -73,7 +73,7 @@ public class BoardTetris extends Board {
     }
 
     /**
-     * Nouveau jeu
+     * Réinitialise la grille et le score
      */
     public void newGame() {
         score = 0;

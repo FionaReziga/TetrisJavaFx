@@ -59,6 +59,8 @@ public class PuissanceView extends Application implements Observer{
         primaryStage.setResizable(false);
         primaryStage.setScene(scene);
         primaryStage.show();
+
+        controller.initiliazeFirstPiece();
     }
 
     /**
@@ -99,6 +101,7 @@ public class PuissanceView extends Application implements Observer{
             if(board.getGrid().getWinnerColor() == RED)  message = "Joueur rouge gagne !";
             if(board.getGrid().getWinnerColor() == ORANGE)  message = "Joueur orange gagne !";
             JOptionPane.showMessageDialog(null, message);
+            controller.newGame();
         }
     }
 }

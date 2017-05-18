@@ -181,4 +181,11 @@ public class GridPuissance extends Grid {
     public Color getWinnerColor() {
         return winnerColor;
     }
+
+    public void reset() {
+        initializeMapCases();
+        currentPiece = new PieceLittleO(0, 3, height, width);
+        currentColor = RED;
+        gameOver = false;
+    }
 }
