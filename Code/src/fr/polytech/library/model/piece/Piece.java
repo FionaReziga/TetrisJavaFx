@@ -18,6 +18,7 @@ public abstract class Piece {
     private int posX;
     private int posY;
     private int[][] matrix;
+
     private int gridHeight;
     private int gridWidth;
 

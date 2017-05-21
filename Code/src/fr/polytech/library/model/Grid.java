@@ -102,6 +102,10 @@ public class Grid {
         return caseFulled;
     }
 
+    public void setCaseFulled(int X, int Y, Color color) {
+        this.caseFulled[X][Y] = color;
+    }
+
     /**
      * Fonction qui retourne la pièce courante
      * @return currentPiece
