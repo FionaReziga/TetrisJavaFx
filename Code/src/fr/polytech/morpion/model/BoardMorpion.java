@@ -41,6 +41,10 @@ public class BoardMorpion extends Board {
         return true;
     }
 
+    /**
+     * Fin du jeu
+     * @return GameOver
+     */
     public boolean gameOver(){
         GridMorpion currentGrid = (GridMorpion) grid;
         return currentGrid.isGameOver();

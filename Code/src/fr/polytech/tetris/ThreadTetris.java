@@ -19,6 +19,9 @@ public class ThreadTetris implements Runnable {
         new Thread(this).start();
     }
 
+    /**
+     * Lance le thread du jeu Tetris permettant de rendre le jeu autonome
+     */
     @Override
     public void run() {
         try {

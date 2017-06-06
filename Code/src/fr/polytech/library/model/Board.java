@@ -11,11 +11,23 @@ import java.util.Observable;
 public class Board  extends Observable {
     protected Grid grid;
 
+    /**
+     * Constructeur de la classe du plateau de jeu
+     * @param width
+     * @param height
+     * @param sizeCase
+     * @param color
+     */
     public Board(int width, int height, int sizeCase, Color color) {
         this.grid = new Grid(width, height, sizeCase, color);
     }
 
+    /**
+     * Renvoie le plateau de jeu
+     * @return
+     */
     public Grid getGrid() {
         return grid;
     }
+
 }

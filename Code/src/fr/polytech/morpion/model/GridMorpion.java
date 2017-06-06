@@ -123,14 +123,25 @@ public class GridMorpion extends Grid {
         return false;
     }
 
+    /**
+     * GameOver
+     * @return boolean
+     */
     public boolean isGameOver() {
         return gameOver;
     }
 
+    /**
+     * Renvoie la couleur du joueur gagant
+     * @return
+     */
     public Color getWinnerColor() {
         return winnerColor;
     }
 
+    /**
+     * Reset le jeu et remet de le joueur actuel comme rouge
+     */
     public void reset() {
         initializeMapCases();
         currentColor = RED;

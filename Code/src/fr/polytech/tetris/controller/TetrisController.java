@@ -56,10 +56,16 @@ public class TetrisController implements EventHandler<KeyEvent> {
         }
     }
 
+    /**
+     * Nouveau Jeu
+     */
     public void newGame() {
         board.newGame();
     }
 
+    /**
+     * Met pause au jeu en cours
+     */
     public void stopGame() {
         board.setRun(false);
     }
