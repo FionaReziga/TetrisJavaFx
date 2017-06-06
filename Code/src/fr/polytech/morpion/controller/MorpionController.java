@@ -51,6 +51,9 @@ public class MorpionController implements EventHandler<MouseEvent> {
         }
     }
 
+    /**
+     * Nouveau jeu
+     */
     public void newGame() {
         board.newGame();
     }

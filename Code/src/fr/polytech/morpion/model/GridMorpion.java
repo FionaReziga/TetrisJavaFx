@@ -41,12 +41,19 @@ public class GridMorpion extends Grid {
         currentPiece = piece;
     }
 
+    /**
+     * Retourne la couleur inscrite dans la matrice à la position x et y
+     * @param x : position en x
+     * @param y : position en y
+     * @return Color
+     */
     public Color getCaseFulled(int x, int y) {
         return caseFulled[x][y];
     }
 
     /**
      * Verifie en cas de gagnant
+     *
      * @return
      */
     public boolean checkWinner() {
@@ -67,7 +74,7 @@ public class GridMorpion extends Grid {
     private boolean checkAllCasesFulled() {
         boolean allCasesFulled = true;
         for (int i = 0; i < height; i++) {
-            for (int j = 0; j < width ; j++) {
+            for (int j = 0; j < width; j++) {
                 if (caseFulled[i][j] == null) allCasesFulled = false;
             }
         }
@@ -76,22 +83,24 @@ public class GridMorpion extends Grid {
 
     /**
      * Verifie si il y'a un gagnant dans une diagonale
+     *
      * @return
      */
     private boolean checkAntiDiagonals() {
         if ((caseFulled[0][0] == caseFulled[1][1]) && (caseFulled[1][1] == caseFulled[2][2])) {
-            if(caseFulled[0][0] != null) return true;
+            if (caseFulled[0][0] != null) return true;
         }
         return false;
     }
 
     /**
      * Verifie si il y'a un gagnant dans une diagonale
+     *
      * @return
      */
     private boolean checkDiagonals() {
         if ((caseFulled[2][0] == caseFulled[1][1]) && (caseFulled[1][1] == caseFulled[0][2])) {
-            if(caseFulled[2][0] != null) return true;
+            if (caseFulled[2][0] != null) return true;
         }
         return false;
     }
@@ -99,12 +108,13 @@ public class GridMorpion extends Grid {
 
     /**
      * Verifie si il y'a un gagnant dans une ligne
+     *
      * @return
      */
     private boolean checkColumns() {
         for (int i = 0; i < width; i++) {
             if ((caseFulled[i][0] == caseFulled[i][1]) && (caseFulled[i][1] == caseFulled[i][2])) {
-                if(caseFulled[i][0] != null) return true;
+                if (caseFulled[i][0] != null) return true;
             }
         }
         return false;
@@ -112,12 +122,13 @@ public class GridMorpion extends Grid {
 
     /**
      * Verifie si il y'a un gagnant dans une colonne
+     *
      * @return
      */
     private boolean checkRows() {
         for (int j = 0; j < height; j++) {
             if ((caseFulled[0][j] == caseFulled[1][j]) && (caseFulled[1][j] == caseFulled[2][j])) {
-                if(caseFulled[0][j] != null) return true;
+                if (caseFulled[0][j] != null) return true;
             }
         }
         return false;

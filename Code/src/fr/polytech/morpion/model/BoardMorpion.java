@@ -50,6 +50,10 @@ public class BoardMorpion extends Board {
         return currentGrid.isGameOver();
     }
 
+    /**
+     * Retourne la grille du morpion
+     * @return GridMorpion
+     */
     public GridMorpion getGrid() {
         return (GridMorpion) grid;
     }
