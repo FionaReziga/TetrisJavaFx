@@ -54,6 +54,7 @@ public class TetrisView extends Application implements Observer {
 
     /**
      * Démarrage du jeu
+     *
      * @throws Exception
      */
     @Override
@@ -176,6 +177,7 @@ public class TetrisView extends Application implements Observer {
 
     /**
      * Mise à jour de la grille
+     *
      * @param o
      * @param arg
      */
@@ -186,8 +188,8 @@ public class TetrisView extends Application implements Observer {
         GridTetris grid = (GridTetris) board.getGrid();
 
         if (((GridTetris) board.getGrid()).isGameOver()) {
-            int dialogResult = JOptionPane.showConfirmDialog (null, "Perdu ! Voulez-vous rejouer ?","Fin de la partie", YES_NO_OPTION);
-            if(dialogResult == JOptionPane.YES_OPTION){
+            int dialogResult = JOptionPane.showConfirmDialog(null, "Perdu ! Voulez-vous rejouer ?", "Fin de la partie", YES_NO_OPTION);
+            if (dialogResult == JOptionPane.YES_OPTION) {
                 controller.getBoard().newGame();
             } else {
                 Platform.exit();

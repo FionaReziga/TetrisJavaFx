@@ -23,6 +23,7 @@ public class GPane extends GridPane implements Observer {
 
     /**
      * Mise à jour de la Grid Pane
+     *
      * @param o
      * @param arg
      */
@@ -37,7 +38,7 @@ public class GPane extends GridPane implements Observer {
         // On nettoie la grille
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
-                Node object = getChildren().get(i + (j * height) );
+                Node object = getChildren().get(i + (j * height));
                 if (object instanceof Rectangle) {
                     Rectangle current = (Rectangle) object;
                     current.setFill(board.getGrid().getColor());
@@ -66,11 +67,11 @@ public class GPane extends GridPane implements Observer {
         int[][] matrixPiece = board.getGrid().getCurrentPiece().getMatrix();
         for (int i = 0; i < matrixPiece.length; i++) {
             for (int j = 0; j < matrixPiece[0].length; j++) {
-                Node object = getChildren().get((i + board.getGrid().getCurrentPiece().getPosX()) + ((j + board.getGrid().getCurrentPiece().getPosY()) * height) );
+                Node object = getChildren().get((i + board.getGrid().getCurrentPiece().getPosX()) + ((j + board.getGrid().getCurrentPiece().getPosY()) * height));
                 if (object instanceof Rectangle && matrixPiece[i][j] != 0) {
                     Rectangle current = (Rectangle) object;
                     current.setFill(board.getGrid().getCurrentPiece().getColor());
-                }  else if (object instanceof Circle && matrixPiece[i][j] != 0) {
+                } else if (object instanceof Circle && matrixPiece[i][j] != 0) {
                     Circle current = (Circle) object;
                     current.setFill(board.getGrid().getCurrentPiece().getColor());
                 }
