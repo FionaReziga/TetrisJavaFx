@@ -152,7 +152,6 @@ public class TetrisView extends Application implements Observer {
      * Initialisation de la Grid
      */
     private void initializeGrid(GridPane gridPane, int width, int height, Color gridColor, int sizeCase) {
-        gridPane.setGridLinesVisible(true);
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
                 Rectangle rectangle = new Rectangle(sizeCase, sizeCase);
@@ -199,9 +198,9 @@ public class TetrisView extends Application implements Observer {
         // On nettoie la grille
         for (int i = 0; i < PREVIOUS_GRID_HEIGHT; i++) {
             for (int j = 0; j < PREVIOUS_GRID_WIDTH; j++) {
-                Node object = previousPane.getChildren().get(i + (j * PREVIOUS_GRID_HEIGHT) + 1);
+                Node object = previousPane.getChildren().get(i + (j * PREVIOUS_GRID_HEIGHT));
                 if (object instanceof Rectangle) {
-                    Rectangle current = (Rectangle) previousPane.getChildren().get(i + (j * PREVIOUS_GRID_HEIGHT) + 1);
+                    Rectangle current = (Rectangle) previousPane.getChildren().get(i + (j * PREVIOUS_GRID_HEIGHT));
                     current.setFill(BLACK);
                 }
             }
@@ -210,7 +209,7 @@ public class TetrisView extends Application implements Observer {
         int[][] matrixPiece = grid.getNextPiece().getMatrix();
         for (int i = 0; i < matrixPiece.length; i++) {
             for (int j = 0; j < matrixPiece[0].length; j++) {
-                Node object = previousPane.getChildren().get((i + 1) * 5 + j + 2);
+                Node object = previousPane.getChildren().get(i * 5 + j + 1);
                 if (object instanceof Rectangle && matrixPiece[i][j] != 0) {
                     Rectangle current = (Rectangle) object;
                     current.setFill(grid.getNextPiece().getColor());
