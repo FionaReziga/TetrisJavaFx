@@ -1,7 +1,7 @@
 package fr.polytech.puissance4.model;
 
-        import fr.polytech.library.model.Board;
-        import javafx.scene.paint.Color;
+import fr.polytech.library.model.Board;
+import javafx.scene.paint.Color;
 
 /**
  * Created by REZIGA on 14/05/2017.

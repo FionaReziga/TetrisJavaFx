@@ -24,8 +24,8 @@ import static javax.swing.JOptionPane.YES_NO_OPTION;
  * Classe qui génère la vue du jeu Puissance 4
  */
 public class PuissanceView extends Application implements Observer {
-    public final static int GRID_WIDTH = 7;
-    public final static int GRID_HEIGHT = 7;
+    private final static int GRID_WIDTH = 7;
+    private final static int GRID_HEIGHT = 7;
     private final static int SIZE_CASE = 100;
     private final static Color GRID_COLOR = BLACK;
 
@@ -70,7 +70,6 @@ public class PuissanceView extends Application implements Observer {
      * Initialisation de la Grid
      */
     private void initializeGrid(GridPane gridPane, int width, int height, Color gridColor, int sizeCase) {
-        gridPane.setGridLinesVisible(true);
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
                 Circle circle = new Circle(sizeCase / 2 - 1, gridColor);
