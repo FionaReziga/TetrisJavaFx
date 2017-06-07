@@ -56,11 +56,7 @@ public class MorpionController implements EventHandler<MouseEvent> {
     }
 
     /**
-<<<<<<< HEAD
      * Lance un nouveau jeu
-=======
-     * Nouveau jeu
->>>>>>> master
      */
     public void newGame() {
         board.newGame();
