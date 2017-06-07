@@ -1,0 +1,12 @@
+fr.polytech.library.model
+fr.polytech.library.model.piece
+fr.polytech.library.view
+fr.polytech.morpion
+fr.polytech.morpion.controller
+fr.polytech.morpion.model
+fr.polytech.puissance4
+fr.polytech.puissance4.controller
+fr.polytech.puissance4.model
+fr.polytech.tetris
+fr.polytech.tetris.controller
+fr.polytech.tetris.model
