@@ -13,10 +13,10 @@ public class Board  extends Observable {
 
     /**
      * Constructeur de la classe du plateau de jeu
-     * @param width
-     * @param height
-     * @param sizeCase
-     * @param color
+     * @param width : largeur du plateau
+     * @param height : hauteur du plateau
+     * @param sizeCase : taille des cases
+     * @param color : couleur du plateau
      */
     public Board(int width, int height, int sizeCase, Color color) {
         this.grid = new Grid(width, height, sizeCase, color);
@@ -24,7 +24,7 @@ public class Board  extends Observable {
 
     /**
      * Renvoie le plateau de jeu
-     * @return
+     * @return : une instance de Grid
      */
     public Grid getGrid() {
         return grid;

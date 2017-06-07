@@ -39,7 +39,7 @@ public class PuissanceView extends Application implements Observer {
     /**
      * Démarrage
      *
-     * @param primaryStage
+     * @param primaryStage : conteneur de l'application
      * @throws Exception
      */
     @Override
@@ -93,8 +93,8 @@ public class PuissanceView extends Application implements Observer {
     /**
      * Mise à jour de la vue Puissance 4
      *
-     * @param o
-     * @param arg
+     * @param o : observable
+     * @param arg : argument
      */
     @Override
     public void update(Observable o, Object arg) {

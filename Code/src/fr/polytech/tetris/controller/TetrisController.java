@@ -17,11 +17,10 @@ public class TetrisController implements EventHandler<KeyEvent> {
 
     /**
      * Controleur
-     *
-     * @param width
-     * @param height
-     * @param sizeCase
-     * @param color
+     * @param width : largeur
+     * @param height : hauteur
+     * @param sizeCase : taille de la case
+     * @param color : couleur
      */
     public TetrisController(int width, int height, int sizeCase, Color color) {
         board = new BoardTetris(width, height, sizeCase, color);
@@ -31,7 +30,7 @@ public class TetrisController implements EventHandler<KeyEvent> {
     /**
      * Renvoie le plateau du Tetris
      *
-     * @return
+     * @return une instance de board
      */
     public BoardTetris getBoard() {
         return board;

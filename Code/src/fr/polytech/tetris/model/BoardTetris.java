@@ -14,10 +14,10 @@ public class BoardTetris extends Board {
     /**
      * Constructeur du plateau du Tetris
      *
-     * @param width
-     * @param height
-     * @param sizeCase
-     * @param color
+     * @param width : largeur
+     * @param height : hauteur
+     * @param sizeCase : taille de la case
+     * @param color : couleur
      */
     public BoardTetris(int width, int height, int sizeCase, Color color) {
         super(width, height, sizeCase, color);
@@ -29,8 +29,8 @@ public class BoardTetris extends Board {
     /**
      * Synchronisation des mouvements de la pièce
      *
-     * @param offsetX
-     * @param offsetY
+     * @param offsetX : future position X de la piece
+     * @param offsetY : future position Y de la piece
      */
     public synchronized void movePiece(int offsetX, int offsetY) {
         boolean move = grid.movePiece(offsetX, offsetY);
@@ -57,7 +57,7 @@ public class BoardTetris extends Board {
     /**
      * Renvoie le score du joueur
      *
-     * @return
+     * @return score : le score
      */
     public int getScore() {
         return score;
@@ -66,7 +66,7 @@ public class BoardTetris extends Board {
     /**
      * Définit le score du joueur
      *
-     * @param score
+     * @param score : le score incrémenté
      */
     public void setScore(int score) {
         this.score += score;
@@ -84,7 +84,7 @@ public class BoardTetris extends Board {
 
     /**
      * Renvoie le statut run
-     * @return
+     * @return run : vrai ou faux en fonction de si le jeu tourne
      */
     public boolean isRun() {
         return run;
@@ -92,7 +92,7 @@ public class BoardTetris extends Board {
 
     /**
      * Définit le statut run
-     * @param run
+     * @param run : le statut du jeu
      */
     public void setRun(boolean run) {
         this.run = run;

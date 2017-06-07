@@ -16,11 +16,11 @@ import static javafx.scene.paint.Color.TRANSPARENT;
 public class BoardMorpion extends Board {
 
     /**
-     * Constructeur du plateau de puissance 4
-     * @param width
-     * @param height
-     * @param sizeCase
-     * @param color
+     * Constructeur du plateau de Morpion
+     * @param width : largeur de la grille
+     * @param height : hauteur de la grille
+     * @param sizeCase : taille de la case
+     * @param color : couleur des cases
      */
     public BoardMorpion(int width, int height, int sizeCase, Color color) {
         super(width, height, sizeCase, color);
@@ -28,9 +28,9 @@ public class BoardMorpion extends Board {
     }
 
     /**
-     * Synchronisation des mouvements de la pièce
-     * @param offsetX
-     * @param offsetY
+     * Synchronise les mouvements de la pièce
+     * @param offsetX : future position X
+     * @param offsetY : future position Y
      */
     public synchronized boolean movePiece(int offsetX, int offsetY) {
         GridMorpion currentGrid = (GridMorpion) grid;
@@ -42,8 +42,8 @@ public class BoardMorpion extends Board {
     }
 
     /**
-     * Fin du jeu
-     * @return GameOver
+     * Retourne vrai si le jeu est terminé
+     * @return GameOver : vrai ou faux selon la valeur de l'attribut gameOver de la grille
      */
     public boolean gameOver(){
         GridMorpion currentGrid = (GridMorpion) grid;

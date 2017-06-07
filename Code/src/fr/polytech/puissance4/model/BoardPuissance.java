@@ -11,10 +11,10 @@ public class BoardPuissance extends Board {
 
     /**
      * Constructeur du plateau de puissance 4
-     * @param width
-     * @param height
-     * @param sizeCase
-     * @param color
+     * @param width : largeur
+     * @param height : hauteur
+     * @param sizeCase : taille de la case
+     * @param color : couleur
      */
     public BoardPuissance(int width, int height, int sizeCase, Color color) {
         super(width, height, sizeCase, color);
@@ -23,8 +23,8 @@ public class BoardPuissance extends Board {
 
     /**
      * Synchronisation des mouvements de la pièce
-     * @param offsetX
-     * @param offsetY
+     * @param offsetX : future position X de la piece
+     * @param offsetY : future position Y de la piece
      */
     public synchronized boolean movePiece(int offsetX, int offsetY) {
         boolean move = grid.movePiece(offsetX, offsetY);
@@ -40,7 +40,7 @@ public class BoardPuissance extends Board {
 
     /**
      * Fin du jeu
-     * @return
+     * @return gameOver
      */
     public boolean gameOver(){
         GridPuissance currentGrid = (GridPuissance) grid;
@@ -49,7 +49,7 @@ public class BoardPuissance extends Board {
 
     /**
      * Renvoie la grille du puissance 4
-     * @return
+     * @return : une instance de grid
      */
     public GridPuissance getGrid() {
         return (GridPuissance) grid;

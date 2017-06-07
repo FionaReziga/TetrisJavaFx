@@ -15,10 +15,10 @@ public class PuissanceController implements EventHandler<KeyEvent> {
     /**
      * Controleur
      *
-     * @param width
-     * @param height
-     * @param sizeCase
-     * @param color
+     * @param width : largeur
+     * @param height : hauteur
+     * @param sizeCase : taille de la case
+     * @param color : couleur
      */
     public PuissanceController(int width, int height, int sizeCase, Color color) {
         board = new BoardPuissance(width, height, sizeCase, color);
@@ -27,7 +27,7 @@ public class PuissanceController implements EventHandler<KeyEvent> {
     /**
      * Renvoie le plateau du puissance 4
      *
-     * @return
+     * @return : une instance de board
      */
     public BoardPuissance getBoard() {
         return board;

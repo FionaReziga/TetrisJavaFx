@@ -20,10 +20,10 @@ public class PieceTetris extends Piece {
     }
 
     /**
-     * Fonction qui génère alétoirement une pièce
+     * Fonction qui génère aléatoirement une pièce
      *
-     * @param caseFulled
-     * @return
+     * @param caseFulled : matrice de couleur contenant les couleurs des pièces présentes dans la grille
+     * @return : une pièce générée aléatoirement
      */
     public static Piece generateRandomPiece(Color[][] caseFulled) {
         List<Piece> pieceList = new ArrayList<>();

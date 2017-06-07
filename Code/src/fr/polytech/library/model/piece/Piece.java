@@ -26,10 +26,10 @@ public abstract class Piece {
 
     /**
      * Constructeur de la pièce
-     * @param posX
-     * @param posY
-     * @param gridHeight
-     * @param gridWidth
+     * @param posX : la position X de la piece
+     * @param posY : la position Y de la piece
+     * @param gridHeight : la hauteur de la grille
+     * @param gridWidth : la largeur de la grille
      */
     public Piece(int posX, int posY, int gridHeight, int gridWidth) {
         this.id = idCounter++;
@@ -41,7 +41,7 @@ public abstract class Piece {
 
     /**
      * Retourne la couleur de la pièce
-     * @return color
+     * @return color : la couleur de la piece
      */
     public Color getColor() {
         return color;
@@ -49,7 +49,7 @@ public abstract class Piece {
 
     /**
      * Retourne un tableu qui correspond à la matrice de la pièce
-     * @return
+     * @return : un tableau correspondant à la matrice de la pièce
      */
     public int[][] getMatrix() {
         return matrix;
@@ -57,7 +57,7 @@ public abstract class Piece {
 
     /**
      * Définit la matrice de la pièce
-     * @param matrix
+     * @param matrix : le tableau correspondant à la matrice de la pièce
      */
     public void setMatrix(int[][] matrix) {
         this.matrix = matrix;
@@ -65,7 +65,7 @@ public abstract class Piece {
 
     /**
      * Retourne l'id de la pièce
-     * @return id
+     * @return id : id de la pièce
      */
     public Long getId() {
         return id;
@@ -73,7 +73,7 @@ public abstract class Piece {
 
     /**
      * Retourne la position X de la pièce qui correspond à la ligne
-     * @return X
+     * @return X : la position X de la pièce
      */
     public int getPosX() {
         return posX;
@@ -81,7 +81,7 @@ public abstract class Piece {
 
     /**
      * Retourne la position Y de la pièce qui correspond à la colonne
-     * @return Y
+     * @return Y : la position Y de la pièce
      */
     public int getPosY() {
         return posY;
@@ -89,10 +89,10 @@ public abstract class Piece {
 
     /**
      * Fonction qui permet de faire bouger la pièce et qui verifie les colisions
-     * @param offsetX
-     * @param offsetY
-     * @param caseFulled
-     * @return boolean
+     * @param offsetX : décalage vers la position X
+     * @param offsetY : décalage vers la position Y
+     * @param caseFulled : matrice qui correspond aux pièces déja en place dans la grille
+     * @return boolean : vrai ou faux si le déplacement est possible
      */
     public boolean move(int offsetX, int offsetY, Color[][] caseFulled) {
         int futurPosX = this.posX + offsetX;
@@ -107,7 +107,7 @@ public abstract class Piece {
 
     /**
      * Fonction qui permet de faire tourner la pièce sur elle même et qui vérifie les colisions
-     * @param caseFulled
+     * @param caseFulled : matrice de couleurs qui correspond aux pièces déja en place dans la grille
      */
     public void rotate(Color[][] caseFulled) {
         int columns = this.matrix[0].length;
@@ -125,10 +125,10 @@ public abstract class Piece {
     }
 
     /**
-     * Fonction qui génère aléatoirement une pièce parmis une liste de pièces
-     * @param caseFulled
-     * @param pieceList
-     * @return
+     * Fonction qui génère aléatoirement une pièce parmi une liste de pièces
+     * @param caseFulled : matrice qui correspond aux pièces déja en place dans la grille
+     * @param pieceList : la liste des pièces
+     * @return : une instance de la classe piece
      */
     public static Piece generateRandomPiece(Color[][] caseFulled, List<Piece> pieceList) {
         Piece piece = pieceList.get(new Random().nextInt(pieceList.size()));
@@ -139,11 +139,11 @@ public abstract class Piece {
 
     /**
      * Fonction qui detecte les colisions avec la dernière ligne de la grille
-     * @param caseFulled
-     * @param matrix
-     * @param posX
-     * @param posY
-     * @return boolean
+     * @param caseFulled : matrice de couleur qui correspond aux pièces déja en place dans la grille
+     * @param matrix : future matrice de la pièce
+     * @param posX : la position X de la pièce
+     * @param posY : la position Y de la pièce
+     * @return boolean : vrai ou faux en fonction des collisions
      */
     private boolean checkCollisions(Color[][] caseFulled, int[][] matrix, Integer posX, Integer posY) {
         if (matrix != null) {
@@ -175,11 +175,11 @@ public abstract class Piece {
 
     /**
      * Fonction qui detecte les colisions avec d'autres pièces
-     * @param caseFulled
-     * @param matrix
-     * @param posX
-     * @param posY
-     * @return boolean
+     * @param caseFulled : matrice de couleur qui correspond aux pièces déja en place dans la grille
+     * @param matrix : future matrice de la pièce
+     * @param posX : position X de la pièce
+     * @param posY : position Y de la pièce
+     * @return boolean : vrai ou faux en fonction des collisions
      */
     private boolean checkPieceCollisions(Color[][] caseFulled, int[][] matrix, Integer posX, Integer posY) {
         for (int i = 0; i < matrix.length; i++) {
@@ -193,12 +193,15 @@ public abstract class Piece {
 
     /**
      * Fonction qui définit la couleur de la pièce
-     * @param color
+     * @param : future couleur de la pièce
      */
     public void setColor(Color color) {
         this.color = color;
     }
 
+    /**
+     * Fonction qui permet de définir la matrice de la pièce
+     */
     public void getSetMatrixWithRotation(){
         int columns = this.matrix[0].length;
         int rows = this.matrix.length;

@@ -25,6 +25,10 @@ public class PieceI extends Piece {
         setMatrix(matrix);
     }
 
+    /**
+     * Renvoie la couleur de la pièce
+     * @return color : couleur de la pièce
+     */
     public Color getColor() {
         return color;
     }

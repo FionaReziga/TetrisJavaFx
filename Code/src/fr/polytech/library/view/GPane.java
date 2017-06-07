@@ -24,8 +24,8 @@ public class GPane extends GridPane implements Observer {
     /**
      * Mise à jour de la Grid Pane
      *
-     * @param o
-     * @param arg
+     * @param o : obesvable
+     * @param arg : Object arg
      */
     @Override
     public void update(java.util.Observable o, Object arg) {

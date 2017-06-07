@@ -29,7 +29,7 @@ public class PieceBigI extends Piece {
 
     /**
      * Renvoie la couleur de la pièce
-     * @return color
+     * @return color : couleur de la pièce
      */
     public Color getColor() {
         return color;

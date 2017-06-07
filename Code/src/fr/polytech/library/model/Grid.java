@@ -18,10 +18,10 @@ public class Grid {
 
     /**
      * Constructeur de la Grille
-     * @param width
-     * @param height
-     * @param sizeCase
-     * @param color
+     * @param width : largeur de la grille
+     * @param height : hauteur de la grille
+     * @param sizeCase : taille de la case
+     * @param color : couleur de la grille
      */
     public Grid(int width, int height, int sizeCase, Color color) {
         this.width = width;
@@ -32,7 +32,7 @@ public class Grid {
     }
 
     /**
-     * Initialisation
+     * Initialisation de la matrice de couleur contenant la couleur des pièces sur la grille
      */
     protected void initializeMapCases() {
         caseFulled = new Color[height][width];
@@ -44,10 +44,10 @@ public class Grid {
     }
 
     /**
-     * Fonction qui fait bouger la pièce courante
-     * @param offsetX
-     * @param offsetY
-     * @return
+     * Fonction qui retourne vrai si la position est possible
+     * @param offsetX : future position X
+     * @param offsetY : future position Y
+     * @return vrai ou faux en fonction de la possibilité du déplacement
      */
     public boolean movePiece(int offsetX, int offsetY) {
         boolean movePiece = !currentPiece.move(offsetX, offsetY, caseFulled);
@@ -65,7 +65,7 @@ public class Grid {
     }
 
     /**
-     * Procédure qui sauvegarde la position de la pièce
+     * Procédure qui sauvegarde la position de la pièce dans la matrice de couleur
      */
     public void savePiece() {
         int[][] matrix = currentPiece.getMatrix();
@@ -80,23 +80,23 @@ public class Grid {
 
     /**
      * Fonction qui retourne la largeur de la grille
-     * @return width
+     * @return width : largeur de la grille
      */
     public int getWidth() {
         return width;
     }
 
     /**
-     * Fonction qui retourne la longueur de la grille
-     * @return height
+     * Fonction qui retourne la hauteur de la grille
+     * @return height : hauteur de la grille
      */
     public int getHeight() {
         return height;
     }
 
     /**
-     * Fonction qui retourne une caseFulled
-     * @return caseFulled
+     * Fonction qui retourne la matrice qui correspond aux pièces déja en place dans la grille
+     * @return caseFulled : matrice qui correspond aux pièces déja en place dans la grille
      */
     public Color[][] getCaseFulled() {
         return caseFulled;
@@ -108,12 +108,16 @@ public class Grid {
 
     /**
      * Fonction qui retourne la pièce courante
-     * @return currentPiece
+     * @return currentPiece : une instance de piece
      */
     public Piece getCurrentPiece() {
         return currentPiece;
     }
 
+    /**
+     * Fonction qui renvoie la couleur de la grille
+     * @return color : couleur de la grille
+     */
     public Color getColor() {
         return color;
     }

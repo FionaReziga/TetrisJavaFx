@@ -20,10 +20,10 @@ public class GridMorpion extends Grid {
     /**
      * Constructeur
      *
-     * @param width
-     * @param height
-     * @param sizeCase
-     * @param color
+     * @param width : largeur
+     * @param height : hauteur
+     * @param sizeCase : taille de la case
+     * @param color : couleur
      */
     public GridMorpion(int width, int height, int sizeCase, Color color) {
         super(width, height, sizeCase, color);
@@ -48,7 +48,7 @@ public class GridMorpion extends Grid {
     /**
      * Verifie en cas de gagnant
      *
-     * @return
+     * @return : vrai ou faux s'il y a un gagnant
      */
     public boolean checkWinner() {
         boolean result = false;
@@ -65,6 +65,10 @@ public class GridMorpion extends Grid {
         return result;
     }
 
+    /**
+     * Verifie si la grille est remplie
+     * @return vrai ou faux selon que la grille est remplie
+     */
     private boolean checkAllCasesFulled() {
         boolean allCasesFulled = true;
         for (int i = 0; i < height; i++) {
@@ -76,9 +80,9 @@ public class GridMorpion extends Grid {
     }
 
     /**
-     * Verifie si il y'a un gagnant dans une diagonale
+     * Verifie s'il y a un gagnant dans une anti diagonale
      *
-     * @return
+     * @return vrai ou faux s'il y a un gagnant ou pas dans la anti diagonale
      */
     private boolean checkAntiDiagonals() {
         if ((caseFulled[0][0] == caseFulled[1][1]) && (caseFulled[1][1] == caseFulled[2][2])) {
@@ -88,9 +92,9 @@ public class GridMorpion extends Grid {
     }
 
     /**
-     * Verifie si il y'a un gagnant dans une diagonale
+     * Verifie s'il y a un gagnant dans une diagonale
      *
-     * @return
+     * @return vrai ou faux s'il y a un gagnant ou pas dans la diagonale
      */
     private boolean checkDiagonals() {
         if ((caseFulled[2][0] == caseFulled[1][1]) && (caseFulled[1][1] == caseFulled[0][2])) {
@@ -101,9 +105,9 @@ public class GridMorpion extends Grid {
 
 
     /**
-     * Verifie si il y'a un gagnant dans une ligne
+     * Verifie s'il y a un gagnant dans une ligne
      *
-     * @return
+     * @return vrai ou faux s'il y a un gagnant ou pas dans la ligne
      */
     private boolean checkColumns() {
         for (int i = 0; i < width; i++) {
@@ -115,9 +119,9 @@ public class GridMorpion extends Grid {
     }
 
     /**
-     * Verifie si il y'a un gagnant dans une colonne
+     * Verifie s'il y a un gagnant dans une colonne
      *
-     * @return
+     * @return vrai ou faux s'il y a un gagnant ou pas dans la colonne
      */
     private boolean checkRows() {
         for (int j = 0; j < height; j++) {
@@ -129,8 +133,8 @@ public class GridMorpion extends Grid {
     }
 
     /**
-     * GameOver
-     * @return boolean
+     * Renvoie si le jeu est terminé
+     * @return boolean : gameOver
      */
     public boolean isGameOver() {
         return gameOver;
@@ -138,7 +142,7 @@ public class GridMorpion extends Grid {
 
     /**
      * Renvoie la couleur du joueur gagant
-     * @return
+     * @return : la couleur du gagant
      */
     public Color getWinnerColor() {
         return winnerColor;

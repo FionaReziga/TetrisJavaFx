@@ -16,24 +16,28 @@ public class MorpionController implements EventHandler<MouseEvent> {
     /**
      * Controleur
      *
-     * @param width
-     * @param height
-     * @param sizeCase
-     * @param color
+     * @param width : largeur de la grille
+     * @param height : hauteur de la grille
+     * @param sizeCase : taille de la case
+     * @param color : couleur des cases
      */
     public MorpionController(int width, int height, int sizeCase, Color color) {
         board = new BoardMorpion(width, height, sizeCase, color);
     }
 
     /**
-     * Renvoie le plateau du puissance 4
+     * Renvoie le plateau du morpion
      *
-     * @return
+     * @return : une instance du plateau
      */
     public BoardMorpion getBoard() {
         return board;
     }
 
+    /**
+     * Gère les mouvements de la souris lors d'un clic sur une case
+     * @param event : evenement de la souris
+     */
     @Override
     public void handle(MouseEvent event) {
         if (!board.getGrid().isGameOver()) {
@@ -51,6 +55,9 @@ public class MorpionController implements EventHandler<MouseEvent> {
         }
     }
 
+    /**
+     * Lance un nouveau jeu
+     */
     public void newGame() {
         board.newGame();
     }

@@ -178,8 +178,8 @@ public class TetrisView extends Application implements Observer {
     /**
      * Mise à jour de la grille
      *
-     * @param o
-     * @param arg
+     * @param o : observable
+     * @param arg : argument
      */
     @Override
     public void update(Observable o, Object arg) {
