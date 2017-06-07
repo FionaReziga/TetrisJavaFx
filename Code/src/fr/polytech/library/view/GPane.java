@@ -44,7 +44,7 @@ public class GPane extends GridPane implements Observer {
                     current.setFill(board.getGrid().getColor());
                 } else if (object instanceof Circle) {
                     Circle current = (Circle) object;
-                    current.setFill(i == 0 ? BLUE : board.getGrid().getColor());
+                    current.setFill(board.getGrid().getColor());
                 }
             }
         }
