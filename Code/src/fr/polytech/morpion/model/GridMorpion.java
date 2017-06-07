@@ -41,6 +41,12 @@ public class GridMorpion extends Grid {
         currentPiece = piece;
     }
 
+    /**
+     * Retourne la couleur inscrite dans la matrice à la position x et y
+     * @param x : position en x
+     * @param y : position en y
+     * @return Color
+     */
     public Color getCaseFulled(int x, int y) {
         return caseFulled[x][y];
     }
