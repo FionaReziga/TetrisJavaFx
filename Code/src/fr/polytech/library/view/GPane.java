@@ -9,8 +9,6 @@ import javafx.scene.shape.Rectangle;
 
 import java.util.Observer;
 
-import static javafx.scene.paint.Color.BLUE;
-
 /**
  * Created by REZIGA on 16/05/2017.
  * Classe qui définit une Grid Pane
